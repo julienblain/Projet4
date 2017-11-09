@@ -10,7 +10,6 @@ class PostsController extends AppController {
     }
 
     public function index() {
-        echo 'ici';
         //render est dans core\controller\controller
         $this->render();
     }
