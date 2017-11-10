@@ -33,7 +33,7 @@ class App {
     }
 
     public function getDb() {
-
+        $config = Config::getInstance(ROOT . '/config/config.php');
     }
 
 
