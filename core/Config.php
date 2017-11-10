@@ -22,10 +22,8 @@ class Config {
     public function getSettings($key) {
         if(!isset($this->settings[$key])) {
             return null;
-
         }
         else {
-            var_dump($this->settings);
             return $this->settings[$key];
         }
     }

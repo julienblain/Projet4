@@ -5,6 +5,7 @@
 //carrefour pour l'appli
 
 use Core\Config;
+use Core\Database\MysqlDatabase;
 
 class App {
     public $titlePage = "Billet simple pour l'Alaska";
@@ -37,8 +38,13 @@ class App {
     public function getDb() {
         $config = Config::getInstance(ROOT . '/config/config.php');
         if($this->_dbInstance === null) {
-            //$this->_dbInstance = new MysqlDatabase()
-            $config->getSettings('db_name');
+            $this->_dbInstance = new MysqlDatabase(
+                $config->getSettings('db_name'),
+                $config->getSettings('db_user'),
+                $config->getSettings('db_pass'),
+                $config->getSettings('db_host')
+            );
+
         }
     }
 
