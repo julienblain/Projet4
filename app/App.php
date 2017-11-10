@@ -4,6 +4,8 @@
 //pas de namespace pour que ca soit plus simple a appelé par la suite
 //carrefour pour l'appli
 
+use Core\Config;
+
 class App {
     public $titlePage = "Billet simple pour l'Alaska";
     private $_dbInstance;
@@ -34,6 +36,10 @@ class App {
 
     public function getDb() {
         $config = Config::getInstance(ROOT . '/config/config.php');
+        if($this->_dbInstance === null) {
+            //$this->_dbInstance = new MysqlDatabase()
+            $config->getSettings('db_name');
+        }
     }
 
 
