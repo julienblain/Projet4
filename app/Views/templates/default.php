@@ -5,6 +5,6 @@
         <title></title>
     </head>
     <body>
-        <p> ok</p>
+        <p> tu es sur templates/default </p>
     </body>
 </html>

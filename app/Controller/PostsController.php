@@ -7,6 +7,9 @@ class PostsController extends AppController {
 
     public function __construct() {
         parent::__construct(); //sinon redefinition de construct qui donne le viewPath
+        //appel loadModel du parent
+        $this->loadModel('Posts');
+
     }
 
     public function index() {

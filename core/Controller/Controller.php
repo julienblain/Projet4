@@ -9,7 +9,7 @@ class Controller {
     protected function render() {
 
         require($this->viewPath . 'templates/' . $this->template . '.php');
-
+    
     }
 
     protected function forbidden() {

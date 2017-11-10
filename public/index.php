@@ -16,4 +16,5 @@ $controller = '\App\Controller\\' . ucfirst($page[0]) . 'Controller';
 $action = $page[1];
 
 $controller = new $controller();
+echo 'index';
 $controller->$action();
