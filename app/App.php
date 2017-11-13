@@ -46,6 +46,8 @@ class App {
             );
 
         }
+
+         return $this->_dbInstance;
     }
 
 

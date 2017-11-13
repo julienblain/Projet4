@@ -18,7 +18,7 @@ class Config {
         return self::$_instance;
     }
 
-    //utiliser dans getdb de app
+    //utiliser dans getdb, settings de l'app
     public function getSettings($key) {
         if(!isset($this->settings[$key])) {
             return null;

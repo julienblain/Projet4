@@ -13,8 +13,10 @@ class PostsController extends AppController {
     }
 
     public function index() {
+        $posts = $this->Posts->last();
         //render est dans core\controller\controller
-        $this->render();
+        
+        $this->render($posts);
     }
 
 

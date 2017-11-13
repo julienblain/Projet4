@@ -6,6 +6,12 @@ class PostsTable extends Table {
 
     protected $table = 'posts';
 
+    public function last() {
+        return $this->queryAll();
+
+    }
+
+
 }
 
  ?>

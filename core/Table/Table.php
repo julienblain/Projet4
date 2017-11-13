@@ -17,6 +17,16 @@ class Table {
             $this->table = \strtolower(\str_replace('Table', '', $className)); //posts
         }
     }
+
+    //requete au niveau de la bdd
+    public function queryAll() {
+        return $this->query('SELECT * FROM ' . $this->table);
+    }
+
+    public function query($statement) {
+        //envoi a mysqlDB
+        return $this->db->query($statement);
+    }
 }
 
  ?>
