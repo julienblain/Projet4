@@ -1,10 +1,16 @@
 <div class="">
-    <?php  var_dump($variables);
+    <p>TITRE DU BILLET : <?= $postAndComments[0]->title?></p>
+    <p>Date : Le <?php $date = DateTime::createFromFormat('Y-m-d H:i:s', $postAndComments[0]->datePost);
+                echo   $date->format('d.m.Y');?></p>
 
-    foreach ($posts as $post):
-    ?>
-    <p><?= $post->title ?></p>
-    <p><?= $post->content ?></p>
-<?php endforeach; ?>
+
+    <p><?= $postAndComments[0]->content ?></p>
 </div>
-<?php var_dump($comments[1]); ?>
+<div class="comments">
+    <p>COmmentaire :</p>
+    <?php
+    foreach($postAndComments as $comment) :
+     ?>
+     <p><?php echo $comment->contentComment; ?></p>
+ <?php endforeach; ?>
+</div>

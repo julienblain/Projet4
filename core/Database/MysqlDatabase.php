@@ -46,8 +46,21 @@ class MysqlDatabase {
         $req = $this->getPdo()->query($statement);
         $req->setFetchMode(\PDO::FETCH_OBJ); //recuperation des données sous forme d'objet
         $datas = $req->fetchAll();
+        $req->closeCursor();
         return $datas;
 
+    }
+
+    public function prepare($statement) {
+        $req = $this->getPdo()->prepare($statement);
+        $req->execute();
+        $req->setFetchMode(\PDO::FETCH_OBJ); //recuperation des données sous forme d'objet
+        //QUESTION retourne plusieurs objets avec le post repeté
+        //QUESTION creation d'une class Comment dans Entity ?
+        //QUESTION les champs de 2 tables diff s'écrasnet si meme non?
+        $datas = $req->fetchAll();
+        $req->closeCursor();
+        return $datas;
     }
 
 

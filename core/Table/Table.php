@@ -1,6 +1,6 @@
 <?php
 namespace Core\Table;
-use Core\Database\Database;
+//use Core\Database\MysqlDatabase;
 
 class Table {
 
@@ -21,6 +21,10 @@ class Table {
     public function query($statement) {
         //envoi a mysqlDB
         return $this->db->query($statement);
+    }
+
+    public function prepare($statement) {
+        return $this->db->prepare($statement);
     }
 
     /**
