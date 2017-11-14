@@ -9,14 +9,16 @@ class PostsController extends AppController {
         parent::__construct(); //sinon redefinition de construct qui donne le viewPath
         //appel loadModel du parent
         $this->loadModel('Posts');
+        $this->loadModel('Comments');
+
 
     }
 
     public function index() {
-        $posts = $this->Posts->last();
+        $posts = $this->Posts->queryIndex();
         //render est dans core\controller\controller
-        
-        $this->render($posts);
+        $comments = $this->Comments->queryAll();
+        $this->render('posts.index', compact('posts', 'comments'));
     }
 
 

@@ -6,7 +6,8 @@ class PostsTable extends Table {
 
     protected $table = 'posts';
 
-    public function last() {
+    //QUESTION 2 requetes via Table ou une ici ?
+    public function queryIndex() {
         return $this->queryAll();
 
     }

@@ -8,6 +8,7 @@ class Config {
     private static $_instance; //instance de bdd
 
     public function __construct($fileConfig) {
+        // echo $fileConfig ex CommentsTable
         $this->settings = require($fileConfig);
     }
 

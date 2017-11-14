@@ -18,15 +18,21 @@ class Table {
         }
     }
 
-    //requete au niveau de la bdd
-    public function queryAll() {
-        return $this->query('SELECT * FROM ' . $this->table);
-    }
-
     public function query($statement) {
         //envoi a mysqlDB
         return $this->db->query($statement);
     }
+
+    /**
+     *
+     * @return object
+     */
+    //requete au niveau de la bdd
+    public function queryAll() {
+        return $this->query("SELECT * FROM {$this->table}");
+    }
+
+
 }
 
  ?>
