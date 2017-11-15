@@ -33,7 +33,8 @@ class PostsController extends AppController {
 
     public function index() {
         $postAndComments = $this->Posts->queryIndex();
-        $this->render('posts.index', compact('postAndComments'));
+        $postsTitle = $this->Posts->queryTitles();
+        $this->render('posts.index', compact('postAndComments', 'postsTitle'));
     }
 
 
