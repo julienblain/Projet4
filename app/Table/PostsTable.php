@@ -19,7 +19,7 @@ class PostsTable extends Table {
 
     public function queryTitles() {
         return $this->query(
-            "SELECT title FROM posts"
+            "SELECT id, title FROM posts"
         );
     }
 

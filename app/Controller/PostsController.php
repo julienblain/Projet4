@@ -22,13 +22,14 @@ class PostsController extends AppController {
         $this->render('posts.index', compact('posts', 'comments'));
     }*/
 
-    public function comments() {
+    public function postsSelected() {
         $postId = \explode('.', $_GET['p']);
         $postId = $postId[1];
 
-        $comments = $this->Comments->queryCommentsById($postId);
-        var_dump($comments);
-        $this->render('posts.comments', compact('comments'));
+        //on reprend la vue de posts.index qui a deja le nav
+        $postAndComments = $this->Comments->queryCommentsById($postId);
+        $postsTitle = $this->Posts->queryTitles();
+        $this->render('posts.index', compact('postAndComments', 'postsTitle'));
     }
 
     public function index() {
@@ -36,6 +37,7 @@ class PostsController extends AppController {
         $postsTitle = $this->Posts->queryTitles();
         $this->render('posts.index', compact('postAndComments', 'postsTitle'));
     }
+
 
 
 }
