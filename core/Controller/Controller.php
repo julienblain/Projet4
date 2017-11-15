@@ -6,14 +6,22 @@ class Controller {
     protected $viewPath;
     protected $template;
 
-    protected function render($view, $variables = []) {
-
+    //QUESTION c pas trop degueulasse ?
+    //QUESTION il vaut mieux isset ou === true
+    protected function render($view, $variables = [], $view2 = null) {
     /*    ob_start();
         $contentHeader = ob_get_clean();
 
         ob_start(); */
-        extract($variables); //importe les variables dans la table des symboles, et envoie a la vue car le require est au meme niveau
-//var_dump($variables);
+        if ($variables === true) {
+            extract($variables); //importe les variables dans la table des symboles, et envoie a la vue car le require est au meme niveau
+    //var_dump($variables);
+        }
+
+        if(isset($view2)) {
+            require($this->viewPath . str_replace('.', '/', $view) . '.php');
+        }
+
         require($this->viewPath . str_replace('.', '/', $view) . '.php');
         $content = ob_get_clean();
         require($this->viewPath . 'templates/' . $this->template . '.php');
