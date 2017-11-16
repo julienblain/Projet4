@@ -42,23 +42,35 @@ class MysqlDatabase {
 
     //recuperation des donnees grace a fecth
     //QUESTION on fait un try pour fetch ?
-    public function query($statement) {
+    public function query($statement, $one = false) {
         $req = $this->getPdo()->query($statement);
         $req->setFetchMode(\PDO::FETCH_OBJ); //recuperation des données sous forme d'objet
-        $datas = $req->fetchAll();
+
+        if($one) {
+            $datas = $req->fetch();
+        }
+        else {
+            $datas = $req->fetchAll();
+        }
         $req->closeCursor();
         return $datas;
 
     }
 
-    public function prepare($statement) {
+//au cas ou on recupere qu'une donnée
+    public function prepare($statement, $one = false) {
         $req = $this->getPdo()->prepare($statement);
         $req->execute();
         $req->setFetchMode(\PDO::FETCH_OBJ); //recuperation des données sous forme d'objet
         //QUESTION retourne plusieurs objets avec le post repeté
         //QUESTION creation d'une class Comment dans Entity ?
         //QUESTION les champs de 2 tables diff s'écrasnet si meme non?
-        $datas = $req->fetchAll();
+        if($one) {
+            $datas = $req->fetch();
+        }
+        else {
+            $datas = $req->fetchAll();
+        }
         $req->closeCursor();
         return $datas;
     }

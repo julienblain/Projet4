@@ -12,13 +12,34 @@ use Core\Auth\DBAuth;
          $app = App::getInstance();
 
          $auth = new DBAuth($app->getDb());
-         //si l'admin n'est pas loggé
-         if(!$auth->logged()) {
+
+         //verif login
+         if(isset($_POST['login']) && isset($_POST['password'])) {
+             $login = htmlspecialchars($_POST['login']);
+             $password = htmlspecialchars($_POST['password']);
+
+             if($auth->login($login, $password, true) === true) {
+                 $_SESSION['auth'] = $login;
+                 $this->render('admin.index');
+             }
+             else {
+                 //envoie vers la forbidden du controller;
+             return $this->forbidden('admin.errors');
+             }
+
+         }
+         else {
              $this->connectionPage();
          }
+
+
      }
 
      public function connectionPage() {
          $this->render('admin.connection');
+     }
+
+     public function login() {
+
      }
  }

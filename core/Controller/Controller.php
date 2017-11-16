@@ -9,11 +9,12 @@ class Controller {
     //QUESTION c pas trop degueulasse ?
     //QUESTION il vaut mieux isset ou === true
     protected function render($view, $variables = [], $view2 = null) {
+
     /*    ob_start();
         $contentHeader = ob_get_clean();
 
         ob_start(); */
-        if ($variables === true) {
+        if (!empty($variables)) {
             extract($variables); //importe les variables dans la table des symboles, et envoie a la vue car le require est au meme niveau
     //var_dump($variables);
         }
@@ -30,8 +31,11 @@ class Controller {
 
     }
 
-    protected function forbidden() {
+    protected function forbidden($view) {
         //TODO faire la vaue
+        $this->render($view);
+
+
     }
 
     protected function notFound() {

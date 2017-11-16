@@ -1,10 +1,11 @@
-<p>Salut Jean !</p>
-<form class="" action="index.html" method="post">
-    <label for="">
-        Login : <input type="text">
+<p>Salut </p>
+<?php //QUESTION la vue et le controller ne sont pas distinct ?>
+<form class="" action="?p=logged.connection" method="post">
+    <label for="login">
+        Login : <input type="text" name="login" required>
     </label>
-    <label for="">
-        Mot de passe : <input type="text">
+    <label for="password">
+        Mot de passe : <input type="password" name="password" required>
     </label>
     <button type="submit" name="btn-connection">Valider</button>
 </form>

@@ -1,6 +1,7 @@
 <?php
 
 namespace Core\Auth;
+use \Core\Controller\Controller;
 
 class DBAuth {
 
@@ -15,4 +16,22 @@ class DBAuth {
     public function logged() {
         return isset($_SESSION['auth']);
     }
+
+    //QUESTION on met text en bdd pour sha1 ?
+    //verification et validation des logins et debut session
+    public function login($login, $password, $one) {
+        $user = $this->_db->prepare(
+            "SELECT * FROM users "
+        , $one);
+
+        if (($user) && ($user->password === sha1($password))) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+
 }
