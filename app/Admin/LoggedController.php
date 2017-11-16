@@ -39,7 +39,4 @@ use Core\Auth\DBAuth;
          $this->render('admin.connection');
      }
 
-     public function login() {
-
-     }
  }
