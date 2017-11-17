@@ -25,6 +25,5 @@ if((count($page) > 2) && ($page[0] == 'posts') && ($page[2] == 'selected')) {
 }
 
 
-
 $controller = new $controller();
 $controller->$action();

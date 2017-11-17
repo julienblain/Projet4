@@ -23,6 +23,13 @@ class PostsTable extends Table {
         );
     }
 
+    //QUESTION on peut faire un delete sur 2 table en 1 requete ?
+        public function deletePostById($postId) {
+            return $this->delete(
+                "DELETE FROM posts
+                WHERE id = {$postId}"
+            );
+        }
 }
 
  ?>

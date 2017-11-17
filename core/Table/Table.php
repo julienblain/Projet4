@@ -36,6 +36,10 @@ class Table {
         return $this->query("SELECT * FROM {$this->table}");
     }
 
+    public function delete($statement) {
+        return $this->db->delete($statement);
+    }
+
 
 }
 

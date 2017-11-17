@@ -14,7 +14,7 @@ else {
 $page = \explode('.', $page);
 
 //si on chapitre est selectionné a la lecture
-if((count($page) > 2) && ($page[0] == 'posts') && ($page[2] == 'selected')) {
+if((count($page) > 2) && ($page[0] == 'posts')) {
     $controller = '\App\Admin\\' . ucfirst($page[0]) .'Controller';
 
     $action = $page[0]. ucfirst($page[2]);

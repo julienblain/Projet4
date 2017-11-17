@@ -1,4 +1,4 @@
-
+<!--TODO changer le nom du fichier  -->
     <p>TITRE DU BILLET : <?= $postAndComments[0]->title?></p>
     <p>Date : Le <?php
                     $date = DateTime::createFromFormat('Y-m-d H:i:s', $postAndComments[0]->datePost);

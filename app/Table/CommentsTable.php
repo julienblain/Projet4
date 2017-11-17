@@ -14,7 +14,15 @@ class CommentsTable extends Table {
             ON comments.idPost = posts.id
             WHERE posts.id = {$postId}
             "
-        );//TODO oublie de l'ordre
+        );//TODO oublie de l'ordre pour les commentaires
 
+    }
+
+
+    public function deleteCommentsByIdPost($postId) {
+        return $this->delete(
+            "DELETE FROM comments
+            WHERE idPost = {$postId}"
+        );
     }
 }

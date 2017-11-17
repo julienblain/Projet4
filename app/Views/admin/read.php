@@ -1,4 +1,6 @@
 
+<button><a href="?p=posts.<?= $postAndComments[0]->id ?>.delete">Supprimer</a></button>
+
     <p>TITRE DU BILLET : <?= $postAndComments[0]->title?></p>
     <p>Date : Le <?php
                     $date = DateTime::createFromFormat('Y-m-d H:i:s', $postAndComments[0]->datePost);
