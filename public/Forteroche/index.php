@@ -10,9 +10,19 @@ if (isset($_GET['p']) && ($_GET['p'] != 'logged.connection')) {
 else {
     $page = 'logged.connection';
 }
+
 $page = \explode('.', $page);
-$controller = '\App\Admin\\' . ucfirst($page[0]) .'Controller';
-$action = $page[1];
+
+//si on chapitre est selectionné a la lecture
+if((count($page) > 2) && ($page[0] == 'posts') && ($page[2] == 'selected')) {
+    $controller = '\App\Admin\\' . ucfirst($page[0]) .'Controller';
+
+    $action = $page[0]. ucfirst($page[2]);
+
+} else {
+    $controller = '\App\Admin\\' . ucfirst($page[0]) .'Controller';
+    $action = $page[1];
+}
 
 $controller = new $controller;
 $controller->$action();

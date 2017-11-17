@@ -20,7 +20,10 @@ use Core\Auth\DBAuth;
 
              if($auth->login($login, $password, true) === true) {
                  $_SESSION['auth'] = $login;
-                 $this->render('admin.index');
+
+
+                  return $this->adminIndex();
+
              }
              else {
                  //envoie vers la forbidden du controller;
@@ -28,15 +31,23 @@ use Core\Auth\DBAuth;
              }
 
          }
+         elseif (isset($_SESSION['auth'])) {
+             return $this->adminIndex();
+         }
          else {
              $this->connectionPage();
          }
-
-
      }
 
      public function connectionPage() {
          $this->render('admin.connection');
+     }
+
+     public function adminIndex() {
+         $this->loadModel('Posts');
+         $postsTitle = $this->Posts->queryTitles();
+        $variables = compact('postsTitle');
+        $this->render('admin.posts', $variables, 'admin.index');
      }
 
  }

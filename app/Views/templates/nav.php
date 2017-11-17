@@ -8,4 +8,3 @@
             </li>
         <?php endforeach; ?>
     </ul>
-<?= $content ?>

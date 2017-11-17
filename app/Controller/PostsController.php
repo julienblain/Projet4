@@ -29,13 +29,13 @@ class PostsController extends AppController {
         //on reprend la vue de posts.index qui a deja le nav
         $postAndComments = $this->Comments->queryCommentsById($postId);
         $postsTitle = $this->Posts->queryTitles();
-        $this->render('posts.index', compact('postAndComments', 'postsTitle'));
+        $this->render('posts.index', compact('postAndComments', 'postsTitle'), 'templates.nav');
     }
 
     public function index() {
         $postAndComments = $this->Posts->queryIndex();
         $postsTitle = $this->Posts->queryTitles();
-        $this->render('posts.index', compact('postAndComments', 'postsTitle'));
+        $this->render('posts.index', compact('postAndComments', 'postsTitle'), 'templates.nav');
     }
 
 
