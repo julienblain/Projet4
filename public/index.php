@@ -1,8 +1,16 @@
 <?php
 define('ROOT', dirname(__DIR__));
 require ROOT.'/app/App.php';
+if (isset($_SESSION)) {
+    echo 'ok';
+}
 
 App::load();
+//lancement de la session si par lancé automatiquement par le sever
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 
 if (isset($_GET['p'])) {
     $page = $_GET['p'];
@@ -28,6 +36,7 @@ if((count($page) > 2) && ($page[0] == 'posts') && ($page[2] == 'selected')) {
     $controller = '\App\Controller\\' . ucfirst($page[0]) . 'Controller';
     $action = $page[1];
 }
+
 
 
 $controller = new $controller();

@@ -72,7 +72,7 @@ class MysqlDatabase {
             $datas = $req->fetchAll();
         }
         $req->closeCursor();
-
+    
         return $datas;
     }
 
