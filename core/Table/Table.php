@@ -44,6 +44,11 @@ class Table {
         return $this->db->update($statement, $array);
     }
 
+    public function insertInto($statement, $array) {
+        return $this->db->insertInto($statement, $array);
+    }
+
+
 
 }
 

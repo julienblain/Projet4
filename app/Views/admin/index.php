@@ -5,7 +5,7 @@
 </button>
 <button><a href="/Projet4/public/Forteroche/index.php?p=logged.connection">Accueil Admin</a></buton>
 
-<button>Créer</button>
+<button><a href="/Projet4/public/Forteroche/index.php?p=posts.create">Creer</a></button>
 
 
 <?php ?>

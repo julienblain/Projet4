@@ -38,13 +38,25 @@ class PostsTable extends Table {
         public function updatedPost($postId, $postTitle, $postContent) {
             return $this->update(
                 ("UPDATE posts
-                SET title = :postTitle, content = :postContent
+                SET title = :postTitle, content = :postContent, datePost = NOW()
                 WHERE id = {$postId}"),
 
                 (array(
                     'postTitle' => $postTitle,
                     'postContent' => $postContent
-                )) 
+                ))
+            );
+        }
+
+        public function insert($postTitle, $postContent) {
+            return $this->insertInto(
+                    ('INSERT INTO posts(title, content)
+                    VALUES(:postTitle, :postContent)'),
+
+                    (array(
+                        'postTitle' => $postTitle,
+                        'postContent' => $postContent
+                    ))
             );
         }
 }

@@ -90,5 +90,13 @@ class MysqlDatabase {
         $req->closeCursor();
     }
 
+    public function insertInto($statement, $array) {
+        $req = $this->getPdo()->prepare($statement);
+        $req->execute($array);
+        $req->closeCursor();
+    }
+
+
+
 
 }

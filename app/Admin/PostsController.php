@@ -49,11 +49,23 @@ class PostsController extends AppController {
 
         $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
-        echo $postTitle;
-        echo $postContent;
-        echo $postId;
         $post = $this->Posts->updatedPost($postId, $postTitle, $postContent);
+        $this->render('admin.updated');
 
+    }
+
+    public function postsCreate() {
+
+        $this->render('admin.create');
+    }
+
+    public function postsCreated() {
+        $app = App::getInstance();
+        $postTitle = $_POST['postTitle'];
+        $postContent = $_POST['postContent'];
+        var_dump($postTitle);
+        $this->Posts->insert($postTitle, $postContent);
+        $this->render('admin.created');
     }
 
 
