@@ -47,7 +47,7 @@ use Core\Auth\DBAuth;
          $this->loadModel('Posts');
          $postsTitle = $this->Posts->queryTitles();
         $variables = compact('postsTitle');
-        $this->render('admin.posts', $variables, 'admin.index');
+        $this->render('admin.posts', $variables);
      }
 
  }

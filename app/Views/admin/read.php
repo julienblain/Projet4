@@ -1,3 +1,5 @@
+<?php include($this->viewPath."/admin/index.php"); ?>
+
 
 <button><a href="?p=posts.<?= $post[0]->id ?>.delete">Supprimer</a></button>
 

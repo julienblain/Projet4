@@ -8,7 +8,7 @@ class Controller {
 
     //QUESTION c pas trop degueulasse ?
     //QUESTION il vaut mieux isset ou === true
-    protected function render($view, $variables = [], $view2 = null) {
+    protected function render($view, $variables = []) {
 
         ob_start();
         if (!empty($variables)) {
@@ -16,15 +16,9 @@ class Controller {
     //var_dump($variables);
         }
 
-        if(isset($view2)) {
-            require($this->viewPath . str_replace('.', '/', $view2) . '.php');
-        }
-
         require($this->viewPath . str_replace('.', '/', $view) . '.php');
         $content = ob_get_clean();
         require($this->viewPath . 'templates/' . $this->template . '.php');
-        //TODO a mettre ce qu'il y a dessus
-        //require("$this->viewPath/templates/default.php");
 
     }
 

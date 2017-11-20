@@ -1,3 +1,5 @@
+<?php include($this->viewPath."/admin/index.php"); ?>
+
 
 <ul>Liste de chapitre :
     <?php foreach($postsTitle as $postTitle): ?>

@@ -19,7 +19,7 @@ class PostsController extends AppController {
         $postId = $postId[1];
         $post = $this->Posts->queryPostSelected($postId);
         $comments = $this->Comments->queryCommentsById($postId);
-        $this->render('admin.read', compact('post', 'comments'), 'admin.index');
+        $this->render('admin.read', compact('post', 'comments'));
     }
 
     public function postsDelete() {
@@ -28,7 +28,7 @@ class PostsController extends AppController {
         $postId = $postId[1];
         $this->Posts->deletePostById($postId);
         $this->Comments->deleteCommentsByIdPost($postId);
-        $this->render('admin.delete', $variables=[], 'admin.index');
+        $this->render('admin.delete');
 
     }
 
