@@ -10,7 +10,6 @@ class Controller {
     //QUESTION il vaut mieux isset ou === true
     protected function render($view, $variables = [], $view2 = null) {
 
-
         ob_start();
         if (!empty($variables)) {
             extract($variables); //importe les variables dans la table des symboles, et envoie a la vue car le require est au meme niveau

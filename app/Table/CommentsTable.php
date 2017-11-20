@@ -9,10 +9,9 @@ class CommentsTable extends Table {
 
     public function queryCommentsById($postId) {
          return $this->prepare(
-            "SELECT * FROM posts
-            INNER JOIN comments
-            ON comments.idPost = posts.id
-            WHERE posts.id = {$postId}
+            "SELECT * FROM comments
+            WHERE idPost = {$postId}
+            ORDER BY idComment
             "
         );//TODO oublie de l'ordre pour les commentaires
 
@@ -22,7 +21,7 @@ class CommentsTable extends Table {
     public function deleteCommentsByIdPost($postId) {
         return $this->delete(
             "DELETE FROM comments
-            WHERE idPost = {$postId}"
+            WHERE comments.idPost = {$postId}"
         );
     }
 }

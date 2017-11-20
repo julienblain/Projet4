@@ -10,10 +10,7 @@ class PostsTable extends Table {
     public function queryIndex() {
         return $this->prepare(
             "SELECT * FROM posts
-            LEFT JOIN comments
-            ON comments.idPost = posts.id
             WHERE posts.id = (SELECT MAX(id) FROM posts)
-
         ");
     }
 
@@ -27,6 +24,13 @@ class PostsTable extends Table {
         public function deletePostById($postId) {
             return $this->delete(
                 "DELETE FROM posts
+                WHERE id = {$postId}"
+            );
+        }
+
+        public function queryPostSelected($postId) {
+            return $this->prepare(
+                "SELECT * FROM posts
                 WHERE id = {$postId}"
             );
         }
