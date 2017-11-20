@@ -27,7 +27,7 @@ if((count($page) > 2) && ($page[0] == 'posts')) {
 
 } else {
     $controller = '\App\Admin\\' . ucfirst($page[0]) .'Controller';
-    $action = $page[1];
+    $action = $page[0].$page[1];
 }
 
 $controller = new $controller;

@@ -32,7 +32,7 @@ class MysqlDatabase {
                 $this->_pdo = $pdo;
             }
             catch (Exception $e) {
-                die('Erreur : ' . $e->getMessage());
+                die('Error : ' . $e->getMessage());
             }
 
         }
@@ -40,6 +40,7 @@ class MysqlDatabase {
         return $this->_pdo;
     }
 
+    //QUESTION sur les exceptions et ecriture du log
     //recuperation des donnees grace a fecth
     //QUESTION on fait un try pour fetch ?
     public function query($statement, $one = false) {
@@ -79,7 +80,14 @@ class MysqlDatabase {
     public function delete($statement) {
         $req = $this->getPdo()->prepare($statement);
         $req->execute();
+        $req->closeCursor();
         return true;
+    }
+
+    public function update($statement, $array) {
+        $req = $this->getPdo()->prepare($statement);
+        $req->execute($array);
+        $req->closeCursor();
     }
 
 

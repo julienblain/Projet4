@@ -34,6 +34,19 @@ class PostsTable extends Table {
                 WHERE id = {$postId}"
             );
         }
+
+        public function updatedPost($postId, $postTitle, $postContent) {
+            return $this->update(
+                ("UPDATE posts
+                SET title = :postTitle, content = :postContent
+                WHERE id = {$postId}"),
+
+                (array(
+                    'postTitle' => $postTitle,
+                    'postContent' => $postContent
+                )) 
+            );
+        }
 }
 
  ?>

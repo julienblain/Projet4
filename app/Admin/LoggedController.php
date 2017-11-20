@@ -7,7 +7,7 @@ use Core\Auth\DBAuth;
 
  class LoggedController  extends AppController {
 
-     public function connection() {
+     public function loggedConnection() {
 
          $app = App::getInstance();
 

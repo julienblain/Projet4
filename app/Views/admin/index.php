@@ -3,7 +3,7 @@
 <button type="button" name="btn-logout">
     <a href="/Projet4/public/index.php?logout=true">Déconnexion</a>
 </button>
-<buuton><a href="/Projet4/public/Forteroche/index.php?p=logged.connection">Accueil Admin</a></buuton>
+<button><a href="/Projet4/public/Forteroche/index.php?p=logged.connection">Accueil Admin</a></buton>
 
 <button>Créer</button>
 

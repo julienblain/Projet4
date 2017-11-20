@@ -40,6 +40,10 @@ class Table {
         return $this->db->delete($statement);
     }
 
+    public function update($statement, $array) {
+        return $this->db->update($statement, $array);
+    }
+
 
 }
 

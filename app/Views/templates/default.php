@@ -3,10 +3,25 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title><?= App::getInstance()->titlePage ?></title>
+
+        <title><?= //QUESTION ou placer tinymce ?
+        App::getInstance()->titlePage ?></title>
+<script type="text/javascript" src="tinymce/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: '#post-title, #post-content'
+
+    });
+</script>
+
+
     </head>
     <body>
         <a href="?posts.index"> Accueil </a>
         <?php echo $content; ?>
+
+
+
+
     </body>
 </html>

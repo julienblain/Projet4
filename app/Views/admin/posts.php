@@ -8,8 +8,8 @@
                 <?= $postTitle->title ?>
             </a>
             <a href="?p=posts.<?= $postTitle->id ?>.selected"><button>Lire</button></a>
-            <a href=""><button>Modifer</button></a>
-            <a href=""><button>Supprimer</button></a>
+            <a href="?p=posts.<?= $postTitle->id ?>.update"><button>Modifer</button></a>
+            <a href="?p=posts.<?= $postTitle->id ?>.delete"><button>Supprimer</button></a>
         </li>
     <?php endforeach; ?>
 </ul>
