@@ -17,6 +17,7 @@ else {
     $page = 'logged.connection';
 }
 
+
 $page = \explode('.', $page);
 
 //si on chapitre est selectionné a la lecture
@@ -25,7 +26,12 @@ if((count($page) > 2) && ($page[0] == 'posts')) {
 
     $action = $page[0]. ucfirst($page[2]);
 
-} else {
+} elseif((count($page) > 2) && ($page[0] == 'comments')){
+    $controller = '\App\Admin\\' . ucfirst($page[0]) .'Controller';
+
+    $action = $page[0]. ucfirst($page[2]);
+}
+else {
     $controller = '\App\Admin\\' . ucfirst($page[0]) .'Controller';
     $action = $page[0].$page[1];
 }

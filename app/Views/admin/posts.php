@@ -1,5 +1,7 @@
 <?php include($this->viewPath."/admin/index.php"); ?>
 
+<?php include($this->viewPath."admin/commentsReported.php"); ?>
+
 
 <ul>Liste de chapitre :
     <?php foreach($postsTitle as $postTitle): ?>

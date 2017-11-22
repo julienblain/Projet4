@@ -25,16 +25,17 @@ class CommentsTable extends Table {
         );
     }
 
-    public function insert($postId, $author, $email, $content) {
+    public function insert($postId, $author, $email, $content, $addressIp) {
         return $this->insertInto(
-                ('INSERT INTO comments(idPost, author, mail, contentComment)
-                VALUES(:idPost, :author, :mail, :contentComment)'),
+                ('INSERT INTO comments(idPost, author, mail, contentComment, addressIp)
+                VALUES(:idPost, :author, :mail, :contentComment, :addressIp)'),
 
                 (array(
                     'idPost' => $postId,
                     'author' => $author,
                     'mail' => $email,
-                    'contentComment' => $content
+                    'contentComment' => $content,
+                    'addressIp' => $addressIp
                 ))
         );
     }
@@ -55,6 +56,21 @@ class CommentsTable extends Table {
             (array(
                 'nbReported' => $nbReported
             ))
+        );
+    }
+
+    public function queryAllReported() {
+        return $this->query(
+            "SELECT * FROM comments
+            WHERE reportedComment > 0
+            ORDER BY reportedComment DESC"
+        );
+    }
+
+    public function deleteComment($commentId) {
+        return $this->delete(
+            "DELETE FROM comments
+            WHERE idComment = '{$commentId}'"
         );
     }
 
