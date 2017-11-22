@@ -63,7 +63,6 @@ class PostsController extends AppController {
         $app = App::getInstance();
         $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
-        var_dump($postTitle);
         $this->Posts->insert($postTitle, $postContent);
         $this->render('admin.created');
     }

@@ -24,4 +24,18 @@ class CommentsTable extends Table {
             WHERE comments.idPost = {$postId}"
         );
     }
+
+    public function insert($postId, $author, $email, $content) {
+        return $this->insertInto(
+                ('INSERT INTO comments(idPost, author, mail, contentComment)
+                VALUES(:idPost, :author, :mail, :contentComment)'),
+
+                (array(
+                    'idPost' => $postId,
+                    'author' => $author,
+                    'mail' => $email,
+                    'contentComment' => $content
+                ))
+        );
+    }
 }

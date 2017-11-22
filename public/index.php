@@ -27,7 +27,7 @@ else {
 //routing en explosant on sait vers qul namespace aller
 $page = \explode('.', $page);
 //TODO faire le cas admin
-if((count($page) > 2) && ($page[0] == 'posts') && ($page[2] == 'selected')) {
+if((count($page) > 2) /*&& ($page[0] == 'posts') && ($page[2] == 'selected')*/) {
     $controller = '\App\Controller\\' . ucfirst($page[0]) .'Controller';
 
     $action = $page[0]. ucfirst($page[2]);
@@ -38,6 +38,6 @@ if((count($page) > 2) && ($page[0] == 'posts') && ($page[2] == 'selected')) {
 }
 
 
-
+echo $action;
 $controller = new $controller();
 $controller->$action();
