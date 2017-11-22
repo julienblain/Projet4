@@ -18,5 +18,12 @@
     foreach($comments as $comment) :
      ?>
      <p><?php echo $comment->contentComment; ?></p>
+     <button type="button" name="button">
+         <a href="?p=comments.<?= $comment->idComment ?>.delete.<?=
+              $comment->mail ?>.<?=
+              $comment->addressIp ?>">
+
+              Supprimer</a>
+     </button>
  <?php endforeach; ?>
 </div>

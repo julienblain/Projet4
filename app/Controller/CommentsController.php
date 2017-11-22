@@ -15,6 +15,45 @@ class CommentsController extends AppController {
     }
 
     public function commentsComment() {
+        //QUESTION sur le curl
+        //controle du capcha
+        $privatekey ="	6LeeBzoUAAAAACGrDkWN57IvmfIxCZjfC2x-DdVr";
+        $remoteip = $_SERVER["REMOTE_ADDR"];
+        $url = "https://www.google.com/recaptcha/api/siteverify";
+
+        // Form info
+
+        $response = $_POST["g-recaptcha-response"];
+
+        // Curl Request
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url); //url a recuperer
+        curl_setopt($curl, CURLOPT_POST, true); //pour faire un http post
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); //retourne directement le transfert sous forme de chaine de valeur
+        //retourné par curl_exec
+        curl_setopt($curl, CURLOPT_POSTFIELDS, array( //données a passer lors d'une opé http post
+            'secret' => $privatekey,
+            'response' => $response,
+            'remoteip' => $remoteip
+            ));
+        $curlData = curl_exec($curl); //execution de la session curl
+        curl_close($curl);
+
+        // Parse data
+        $recaptcha = json_decode($curlData, true);
+        var_dump($recaptcha);
+        var_dump($_POST);
+        if ($recaptcha["success"]) {
+            echo "Success!";
+        }
+
+        else {
+            //TODO gestion erreur
+            echo "Failure!";
+        }
+
+
+        //fin recaptcha
         $postId = \explode('.', $_GET['p']);
         $postId = $postId[1];
         $author = $_POST['author'];
