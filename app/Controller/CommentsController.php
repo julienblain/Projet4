@@ -10,6 +10,7 @@ class CommentsController extends AppController {
         //appel loadModel du parent
         //$this->loadModel('Posts');
         $this->loadModel('Comments');
+        $this->loadModel('Reported');
 
     }
 
@@ -21,5 +22,22 @@ class CommentsController extends AppController {
         $email = $_POST['email'];
         $this->Comments->insert($postId, $author, $email, $content);
         $this->render('posts.addComment');
+    }
+
+    public function commentsReported() {
+        $id = \explode('.', $_GET['p']);
+        $postId = $id[1];
+        $commentId = $id[3];
+        $email = $_POST['email'];
+
+        //controle du mail du signaleur
+        $reported = $this->Reported->count($email);
+
+        if ($reported[0] == 1 ) {
+            return $this->render('posts.reported');
+        } else {
+            $this->Reported->addEmail($email);
+            return $this->render('posts.reporting');
+        }
     }
 }

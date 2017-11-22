@@ -37,7 +37,5 @@ if((count($page) > 2) /*&& ($page[0] == 'posts') && ($page[2] == 'selected')*/) 
     $action = $page[1];
 }
 
-
-echo $action;
 $controller = new $controller();
 $controller->$action();

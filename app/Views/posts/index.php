@@ -27,6 +27,13 @@
      <p><?= $comment->dateComment ?></p>
      <p><?php echo $comment->contentComment; ?></p>
      <button type="button" name="button">Signaler</button>
+     <form class="" action="?p=comments.<?= $post[0]->id ?>.reported.<?= $comment->idComment ?>" method="post">
+         <label for="">Veuillez renseigner votre email</label>
+         <input type="email" name="email" value="" required>
+         <button type="submit" name="button">Valider</button>
+
+     </form>
+
 
  <?php endforeach; ?>
 </div>

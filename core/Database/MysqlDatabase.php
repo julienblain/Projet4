@@ -96,6 +96,14 @@ class MysqlDatabase {
         $req->closeCursor();
     }
 
+    public function countPrepare($statement) {
+        $req = $this->getPdo()->prepare($statement);
+        $req->execute();
+        $data = $req->fetch();
+        $req->closeCursor();
+        return $data;
+    }
+
 
 
 

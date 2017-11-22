@@ -23,8 +23,8 @@ class Table {
         return $this->db->query($statement);
     }
 
-    public function prepare($statement) {
-        return $this->db->prepare($statement);
+    public function prepare($statement, $one=false) {
+        return $this->db->prepare($statement, $one=false);
     }
 
     /**
@@ -32,8 +32,9 @@ class Table {
      * @return object
      */
     //requete au niveau de la bdd
+    //TODO ne sert a rien
     public function queryAll() {
-        return $this->query("SELECT * FROM {$this->table}");
+        return $this->query("SELECT * FROM reported");
     }
 
     public function delete($statement) {
@@ -46,6 +47,10 @@ class Table {
 
     public function insertInto($statement, $array) {
         return $this->db->insertInto($statement, $array);
+    }
+
+    public function countPrepare($statement) {
+        return $this->db->countPrepare($statement);
     }
 
 
