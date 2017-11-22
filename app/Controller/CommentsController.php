@@ -33,11 +33,20 @@ class CommentsController extends AppController {
         //controle du mail du signaleur
         $reported = $this->Reported->count($email);
 
-        if ($reported[0] == 1 ) {
+        /*if ($reported[0] == 1 ) {
             return $this->render('posts.reported');
         } else {
-            $this->Reported->addEmail($email);
+        */    $this->Reported->addEmail($email);
+
+            //QUESTION peut on faire une re
+            //incrementation du nb de signalement du comment en bdd²
+            $nbReported = $this->Comments->queryReported($commentId);
+            $nbReported = $nbReported->reportedComment +1;
+            $this->Comments->updateComment($commentId, $nbReported);
+
+
+
             return $this->render('posts.reporting');
-        }
+
     }
 }

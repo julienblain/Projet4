@@ -38,4 +38,24 @@ class CommentsTable extends Table {
                 ))
         );
     }
+
+    public function queryReported($commentId, $one=true) {
+        return $this->query((
+            "SELECT reportedComment FROM comments
+            WHERE idComment = '{$commentId}'"
+        ), $one);
+    }
+
+    public function updateComment($commentId, $nbReported) {
+        return $this->update(
+            ("UPDATE comments
+            SET  reportedComment= :nbReported
+            WHERE idComment = '{$commentId}'"),
+
+            (array(
+                'nbReported' => $nbReported
+            ))
+        );
+    }
+
 }

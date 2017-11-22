@@ -18,9 +18,9 @@ class Table {
         }
     }
 
-    public function query($statement) {
+    public function query($statement, $one=false) {
         //envoi a mysqlDB
-        return $this->db->query($statement);
+        return $this->db->query($statement, $one);
     }
 
     public function prepare($statement, $one=false) {
@@ -43,6 +43,10 @@ class Table {
 
     public function update($statement, $array) {
         return $this->db->update($statement, $array);
+    }
+
+    public function updateOne($statement) {
+        return $this->db->updateOne($statement);
     }
 
     public function insertInto($statement, $array) {

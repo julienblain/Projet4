@@ -24,6 +24,8 @@ class ReportedTable extends Table {
         );
     }
 
+    
+
 
 
 
