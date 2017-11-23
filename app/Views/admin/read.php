@@ -14,13 +14,16 @@
 </div>
 <div class="comments">
     <p>Commentaire :</p>
-    <?php
+    <?php var_dump($comments);
     foreach($comments as $comment) :
      ?>
+      <p><?php echo $comment->dateComment; ?></p>
+       <p><?php echo $comment->author; ?></p>
+        <p><?php echo $comment->mail; ?></p>
      <p><?php echo $comment->contentComment; ?></p>
      <button type="button" name="button">
-         <a href="?p=comments.<?= $comment->idComment ?>.delete.<?=
-              $comment->mail ?>.<?=
+         <a href="?p=comments.<?= $comment->idComment ?>.delete.(<?=
+              $comment->mail ?>).<?=
               $comment->addressIp ?>">
 
               Supprimer</a>

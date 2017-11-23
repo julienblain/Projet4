@@ -48,7 +48,6 @@ use Core\Auth\DBAuth;
          $this->loadModel('Comments');
          $postsTitle = $this->Posts->queryTitles();
          $commentsReported = $this->Comments->queryAllReported();
-var_dump($commentsReported);
         $variables = compact('postsTitle', 'commentsReported');
         $this->render('admin.posts', $variables);
      }

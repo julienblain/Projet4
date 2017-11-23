@@ -7,7 +7,7 @@ class ReportedTable extends Table {
 
     protected $table = 'reported';
 
-    public function count($email) {
+    public function countReported($email) {
         return $this->countPrepare(
             "SELECT COUNT(*) FROM reported
             WHERE reported.mailReported = '{$email}'"
@@ -35,6 +35,8 @@ class ReportedTable extends Table {
             ))
         );
     }
+
+
 
 
 

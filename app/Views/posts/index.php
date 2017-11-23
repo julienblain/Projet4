@@ -21,10 +21,10 @@
     </form>
     <p>Commentaire :</p>
     <?php
-
     foreach($comments as $comment) :
      ?>
      <p><?= $comment->dateComment ?></p>
+     <p><?= $comment->author ?></p>
      <p><?php echo $comment->contentComment; ?></p>
      <button type="button" name="button">Signaler</button>
      <form class="" action="?p=comments.<?= $post[0]->id ?>.reported.<?= $comment->idComment ?>" method="post">
