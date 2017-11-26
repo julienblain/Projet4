@@ -6,8 +6,6 @@ class Controller {
     protected $viewPath;
     protected $template;
 
-    //QUESTION c pas trop degueulasse ?
-    //QUESTION il vaut mieux isset ou === true
     protected function render($view, $variables = []) {
 
         ob_start();

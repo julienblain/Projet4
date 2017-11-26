@@ -1,0 +1,124 @@
+/*/////////////////////   GENERAL    ////////////*/
+* {
+    margin: 0 ;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    border : 2px solid green;
+   
+    align-items: center;
+   
+  
+  
+   
+}
+
+/*/////  NAV   /////*/
+
+h1 {
+    border : 2px solid yellow;
+    
+}
+#nav-container {
+    border: 5px solid red;
+    
+}
+
+
+#post-index {
+    margin: auto;   
+    border : 2px black solid;
+    height: 800px;
+    width: 1000px;
+ 
+    box-shadow: 0 10px 30px rgba(0,0,0,1);
+ background-image: linear-gradient(90deg, white, grey, white);
+   
+  
+     
+}
+
+/*permet de recupere le width de l'ensemble du texte*/
+#post-index-container {
+  
+   
+    border: solid 2px yellow;
+    
+  
+    height: 800px;
+    padding: 50px 0 50px 0;
+    width: 100%;
+    position: absolute;
+
+}
+
+.postTitle {
+    display: flex;
+    padding: 0 50px 0 50px ;
+    
+}
+
+#postDate {
+    flex-grow: 1;
+    text-align: right;
+}
+
+/*permet de cacher le text qui depasse*/
+#postContent {
+    border: 2px solid pink;
+ 
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-top: 25px;
+    width: 1000px;
+    overflow: hidden;
+    
+}
+
+/*en relatif pour pouvoir faire le decalage*/
+#postContent p {
+    border: 2px blue solid;
+    position: relative;
+   
+    width: 500px;
+    padding: 0 50px 0 50px;
+  
+}
+
+#post-index-btn {
+    text-align: center;
+}
+.btn-book {
+    filter: 100%;
+    background: rgba(255,255,255,0);
+    border: 0;
+    cursor: pointer;
+    font-size: 35px;
+}
+  
+   
+    
+
+
+
+
+
+
+
+.comments {
+   
+    border: 2px solid red;
+   
+    
+}

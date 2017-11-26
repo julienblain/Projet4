@@ -6,7 +6,7 @@ class PostsTable extends Table {
 
     protected $table = 'posts';
 
-    //QUESTION selection par l'id ou la date ?
+
     public function queryIndex() {
         return $this->prepare(
             "SELECT * FROM posts
@@ -20,7 +20,6 @@ class PostsTable extends Table {
         );
     }
 
-    //QUESTION on peut faire un delete sur 2 table en 1 requete ?
         public function deletePostById($postId) {
             return $this->delete(
                 "DELETE FROM posts

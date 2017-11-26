@@ -16,7 +16,7 @@ if (isset($_GET['p'])) {
     $page = $_GET['p'];
 }
 else if(isset($_GET['logout'])) {
-    //QUESTION session auto_start en general
+    
     session_destroy();
     $page = 'posts.index';
 }

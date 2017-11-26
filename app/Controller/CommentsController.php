@@ -66,7 +66,7 @@ class CommentsController extends AppController {
         if($controlReported[0] > 0) {
             return $this->render('posts.reported');
         }
-        //QUESTION faut il mieux rediriger sur la meme page ?
+
         $this->Comments->insert($postId, $author, $email, $content, $addressIp);
         $this->render('posts.addComment');
     }
@@ -85,8 +85,7 @@ class CommentsController extends AppController {
         } else {
          $this->Reported->addEmail($email);
 */
-            //QUESTION peut on faire une re
-            //incrementation du nb de signalement du comment en bdd²
+            
             $nbReported = $this->Comments->queryReported($commentId);
             $nbReported = $nbReported->reportedComment +1;
             $this->Comments->updateComment($commentId, $nbReported);

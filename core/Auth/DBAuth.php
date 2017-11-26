@@ -17,7 +17,6 @@ class DBAuth {
         return isset($_SESSION['auth']);
     }
 
-    //QUESTION on met text en bdd pour sha1 ?
     //verification et validation des logins et debut session
     public function login($login, $password, $one) {
         $user = $this->_db->prepare(

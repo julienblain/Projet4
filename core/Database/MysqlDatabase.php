@@ -40,9 +40,8 @@ class MysqlDatabase {
         return $this->_pdo;
     }
 
-    //QUESTION sur les exceptions et ecriture du log
+    //TODO sur les exceptions et ecriture du log
     //recuperation des donnees grace a fecth
-    //QUESTION on fait un try pour fetch ?
     public function query($statement, $one = false) {
         $req = $this->getPdo()->query($statement);
         $req->setFetchMode(\PDO::FETCH_OBJ); //recuperation des données sous forme d'objet
@@ -63,9 +62,7 @@ class MysqlDatabase {
         $req = $this->getPdo()->prepare($statement);
         $req->execute();
         $req->setFetchMode(\PDO::FETCH_OBJ); //recuperation des données sous forme d'objet
-        //QUESTION retourne plusieurs objets dans un array avec le post repeté
-        //QUESTION creation d'une class Comment dans Entity ?
-        //QUESTION les champs de 2 tables diff s'écrasnet si meme non?
+    
         if($one) {
             $datas = $req->fetch();
         }

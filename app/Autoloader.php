@@ -11,7 +11,7 @@ class Autoloader {
     static function autoload ($class) {
         //autoload seulement les classes de notre framework -Si le namespace se trouve dans $class
         if (\strpos($class, __NAMESPACE__.'\\') === 0) {
-            //QUESTION
+        
             $class= \str_replace(__NAMESPACE__. '\\', '', $class);
 
             $class = \str_replace('\\', '/', $class);
