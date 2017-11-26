@@ -2,12 +2,11 @@ var sliderBook = {
     click : 0,
     bookWidth : 0,
     nbOffset : 0,
-    /*il vaut mieux recalaculé que mettre les dim en attribut ?*/
     
     txtOffset : function () {
-     
-           var offsetWidth = -(sliderBook.click * sliderBook.bookWidth);
+        var offsetWidth = -(sliderBook.click * sliderBook.bookWidth);
         
+        /*QUESTION pourquoi faut il doublé le temps du fadeIn()*/
         $('#postContent').children('p').fadeOut(500)
             .queue(function (next) {
                 $(this).css("left", offsetWidth);

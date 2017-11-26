@@ -50,6 +50,6 @@
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> <!-- jQuerry -->
 
-        	<script type="text/javascript" src="http://localhost/Projet4/public/js/test.js"></script>
+        	<script type="text/javascript" src="http://localhost/Projet4/public/js/sliderBook.js"></script>
     </body>
 </html>
