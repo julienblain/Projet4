@@ -1,6 +1,6 @@
 <div id="nav-container">
-   <p>Chapitres précédents : </p>
-    <nav>
+   <p>Chapitres précédents </p>
+    <nav id="nav-public">
         <ul> 
             <?php foreach($postsTitle as $postTitle): ?>
                 <li class="post-title nav-post-title">

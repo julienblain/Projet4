@@ -1,9 +1,7 @@
 <?php
+
 define('ROOT', dirname(__DIR__));
 require ROOT.'/app/App.php';
-if (isset($_SESSION)) {
-    echo 'ok';
-}
 
 App::load();
 //lancement de la session si par lancé automatiquement par le sever
@@ -11,12 +9,11 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-
 if (isset($_GET['p'])) {
     $page = $_GET['p'];
 }
 else if(isset($_GET['logout'])) {
-    
+
     session_destroy();
     $page = 'posts.index';
 }

@@ -13,9 +13,9 @@ class Controller {
             extract($variables); //importe les variables dans la table des symboles, et envoie a la vue car le require est au meme niveau
     //var_dump($variables);
         }
-
         require($this->viewPath . str_replace('.', '/', $view) . '.php');
         $content = ob_get_clean();
+
         require($this->viewPath . 'templates/' . $this->template . '.php');
 
     }
