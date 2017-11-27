@@ -2,19 +2,25 @@
   
   
    <div id='postAndComments-index'>
-   <div id="post-index">
+   <div id="book">
+    </div>
+    <div id="book-box">
+    
+   </div>
+   
    <div id="post-index-container">
        <div class="postTitle">
-        <p>TITRE DU BILLET : <?= $post[0]->title?></p>
-        <p id="postDate">Date : Le <?php
-                        $date = DateTime::createFromFormat('Y-m-d H:i:s', $post[0]->datePost);
+        <?= $post[0]->title?>
+        Le <?php $date = DateTime::createFromFormat('Y-m-d H:i:s', $post[0]->datePost);
                         echo   $date->format('d.m.Y');
-                    ?></p>
+                    ?>
 
-    </div>
+    </div>  
     <div id="postContent"><?= $post[0]->content ?></div>
-    </div>
-</div>
+    
+  </div>
+ 
+
 
 <div id="post-index-btn" class="btn">
    <!-- caractere special en html-->

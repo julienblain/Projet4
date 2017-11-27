@@ -19,7 +19,8 @@
     /*suppression du h1*/
     tinymce.init({
         selector: '#post-title, #post-content',
-        block_formats: 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6; Preformatted=pre'
+        block_formats: 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6; Preformatted=pre',
+        
 
     });
 </script>
@@ -40,10 +41,10 @@
             <h1 class=""><a href="?posts.index"> Accueil </a></h1>
             <!--TODO changer le nom du fichier  -->
 
-
+     <?php  include($this->viewPath . "/templates/nav.php");?>
 
         </header>
-            <?php  include($this->viewPath . "/templates/nav.php");?>
+           
             <?php echo $content; ?>
             <footer></footer>
         </div>

@@ -1,55 +1,35 @@
 var sliderBook = {
-    click : 0,
     bookWidth : 0,
-    nbOffset : 0,
     
-    txtOffset : function () {
-        var offsetWidth = -(sliderBook.click * sliderBook.bookWidth);
+    lastChildLeft : function () {
+        this.bookWidth = document.getElementById('post-index-container').offsetWidth;
+        var lastChildOffset = document.getElementById('postContent').lastChild.offsetLeft;
         
-        /*QUESTION pourquoi faut il doublé le temps du fadeIn()*/
-        $('#postContent').children('p').fadeOut(500)
-            .queue(function (next) {
-                $(this).css("left", offsetWidth);
-                next();
-            })
-            .queue(function (next) {
-                $(this).fadeIn(1000);
-                next();
-        });
-     
+        if(lastChildOffset >= this.bookWidth) {
+           var firstChildOffset = document.getElementById('postContent').firstChild.offsetLeft;
+            var offsetWidth = -(this.bookWidth) + firstChildOffset ;
+            $('#postContent').children('p').css('left', offsetWidth);
+        }
     },
     
-    totalNbOffset : function () {
-        /*on recupere les dimensions qui peuvent changer suivant le media query*/
-        sliderBook.bookWidth = document.getElementById("post-index").offsetWidth;
-        var contentBookWidth = document.getElementById("post-index-container").offsetWidth;
+    firstChildLeft : function () {
+         this.bookWidth = document.getElementById('post-index-container').offsetWidth;
+         var firstChildOffset = document.getElementById('postContent').firstChild.offsetLeft;
         
-        /*on arrondi le nb en valeur sup de click possible vers la droite*/
-        sliderBook.nbOffset = Math.ceil(contentBookWidth / sliderBook.bookWidth);
+        if(firstChildOffset < 0) {
+            var offsetWidth = this.bookWidth + firstChildOffset;
+            $('#postContent').children('p').css('left', offsetWidth);
+        }
+        
     }
-};
+}
 
 /*evenement*/
 $("#book-after").click(function() {
-    
-    sliderBook.totalNbOffset();
-    
-    if(sliderBook.click === 0) {
-        sliderBook.click ++;
-        
-        sliderBook.txtOffset();
-    }
-    else if((sliderBook.click >0) && (sliderBook.click < sliderBook.nbOffset)) {
-         sliderBook.click ++;
-        
-        sliderBook.txtOffset();
-    }
+   sliderBook.lastChildLeft();
 });
 
 $("#book-previous").click(function() {
-    sliderBook.totalNbOffset();
-    if(sliderBook.click > 0) {
-        sliderBook.click --;
-        sliderBook.txtOffset();
-    }
+    sliderBook.firstChildLeft();
 });
+
