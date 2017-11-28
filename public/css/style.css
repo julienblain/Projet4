@@ -3,12 +3,12 @@
     margin: 0 ;
     padding: 0;
     box-sizing: border-box;
-    
+
 }
 
 body {
-  
-    
+
+
 }
 
 input, textarea {
@@ -20,7 +20,7 @@ input, textarea {
     background: rgb(242,242,242);
 
     font-family: 'Old Standard TT', serif, sans-serif;
-    
+
 }
 
 header {
@@ -72,16 +72,16 @@ h1 a:hover, #nav-container:hover {
     border-left: 2px dashed black;
     border-right: 2px dashed black;
     background: white;
-    
-    
-    
+
+
+
     z-index: 6;
 }
 
 .nav-post-title {
     list-style: none;
     border-bottom: 2px dashed black;
-    
+
 
 }
 .nav-post-title a {
@@ -92,7 +92,7 @@ h1 a:hover, #nav-container:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .nav-post-title :hover {
@@ -133,8 +133,8 @@ h1 a:hover, #nav-container:hover {
     padding: 30px 0 30px 0;
     overflow: hidden;
     position: absolute;
-    
-    
+
+
 }
 
 .postTitle {
@@ -144,7 +144,7 @@ h1 a:hover, #nav-container:hover {
     font-style: italic;
     text-decoration: underline;
     font-size: 12px;
-    
+
 }
 
 #postContent {
@@ -154,9 +154,9 @@ h1 a:hover, #nav-container:hover {
     flex-wrap: wrap;
     padding-top: 25px;
     position: relative;
-    
+
     font-size: 15px;
-    
+
 }
 
 #postContent p {
@@ -173,7 +173,7 @@ h1 a:hover, #nav-container:hover {
 #post-index-btn {
     text-align: center;
     padding-top: 620px;
-   
+
 }
 .btn-book {
     filter: 100%;
@@ -182,12 +182,12 @@ h1 a:hover, #nav-container:hover {
     cursor: pointer;
     font-size: 35px;
 }
-  
+
 
 /*//////// COMMENTS  ////////////*/
 
 .comments {
-    margin: 20px 30px; 
+    margin: 20px 30px;
     width: 750px;
 }
 
@@ -195,9 +195,11 @@ h1 a:hover, #nav-container:hover {
 display: none;
 border: 2px dashed black;
     padding: 20px 0;
-    
-}
 
+}
+#comments-container {
+    display: none;
+}
 #form-comment-flex {
     display: flex;
     flex-direction : column;
@@ -219,7 +221,7 @@ border: 2px dashed black;
     color: black;
     background: white;
 
-  
+
 }
 
 .comments button {
@@ -261,7 +263,7 @@ border: 2px dashed black;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    
+
 }
 
 .comment-date {
@@ -293,7 +295,7 @@ border: 2px dashed black;
     padding: 2px;
     text-align: right;
     margin: 5px 20px;
-    
+
 }
 
 
@@ -331,7 +333,7 @@ footer a {
     text-decoration: none;
     padding: 5px;
     border: 2px solid black;
-    
+
 }
 
 footer a:hover {

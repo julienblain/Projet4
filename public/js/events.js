@@ -1,9 +1,9 @@
 /* menu de navigation*/
 $("#nav-container").click(
     function() {
-        $("#nav-public").toggle(300);
+        $("#nav-public").slideToggle(300);
     }
-   
+
 );
 
 $("#btn-comment").click(function () {
