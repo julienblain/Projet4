@@ -7,15 +7,19 @@
 }
 
 body {
-    font-family: sans-serif;
+  
     
+}
+
+input, textarea {
+    padding: 5px;
 }
 
 /*TODO reduire la taille de l'image*/
 #main {
     background: rgb(242,242,242);
-    height: 100vh;
-    
+
+    font-family: 'Old Standard TT', serif, sans-serif;
     
 }
 
@@ -23,7 +27,7 @@ header {
     display: flex;
     justify-content: space-between;
     background-color: rgb(0,0,0);
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     height: 80px;
     align-items: center;
     padding: 0 30px;
@@ -76,7 +80,6 @@ h1 a:hover, #nav-container:hover {
 
 .nav-post-title {
     list-style: none;
-   
     border-bottom: 2px dashed black;
     
 
@@ -86,6 +89,10 @@ h1 a:hover, #nav-container:hover {
     display: inline-block;
     width: 100%;
      padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .nav-post-title :hover {
@@ -126,6 +133,8 @@ h1 a:hover, #nav-container:hover {
     padding: 30px 0 30px 0;
     overflow: hidden;
     position: absolute;
+    
+    
 }
 
 .postTitle {
@@ -133,16 +142,21 @@ h1 a:hover, #nav-container:hover {
     display: flex;
     justify-content: space-between;
     font-style: italic;
+    text-decoration: underline;
+    font-size: 12px;
     
 }
 
 #postContent {
-    height: 480px;
+    height: 510px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     padding-top: 25px;
     position: relative;
+    
+    font-size: 15px;
+    
 }
 
 #postContent p {
@@ -151,6 +165,9 @@ h1 a:hover, #nav-container:hover {
     position: relative;
 }
 
+#endChap {
+    text-align: center;
+}
 
 
 #post-index-btn {
@@ -166,13 +183,137 @@ h1 a:hover, #nav-container:hover {
     font-size: 35px;
 }
   
+
+/*//////// COMMENTS  ////////////*/
+
 .comments {
-   
-    border: 2px solid red;
-   display: none;
+    margin: 20px 30px; 
+    width: 750px;
+}
+
+#form-comment {
+display: none;
+border: 2px dashed black;
+    padding: 20px 0;
     
 }
 
+#form-comment-flex {
+    display: flex;
+    flex-direction : column;
+    align-items: flex-start;
+}
+
+#form-comment-flex label {
+    padding: 10px 20px;
+    text-align: left;
+}
+
+#form-comment-textarea {
+    margin-top: 10px;
+    width: 700px;
+    height: 70px;
+}
+
+.comments button:hover {
+    color: black;
+    background: white;
+
+  
+}
+
+.comments button {
+    font-family: 'Bowlby One SC', cursive;
+    border: 2px solid black;
+    color: white;
+    background: black;
+    font-size: 12px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#comments-btn {
+   display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+
+#comments-container-flex {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 20px;
+    border: 2px dashed black;
+}
+
+#comments-container-flex h3 {
+    font-family: 'Bowlby One SC', cursive;
+    font-weight: 100;
+    font-size: 15px;
+}
+
+.comments-backWhite {
+   background: white;
+    margin: 10px 10px 10px 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    
+}
+
+.comment-date {
+    width: 50%;
+    text-align: right;
+    padding: 5px 20px;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.comment-author {
+    width: 50%;
+    text-align: left;
+    padding: 5px 20px;
+    font-weight: 900;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.comment-content {
+    width: 100%;
+    text-align: left;
+    padding: 5px 20px;
+}
+
+
+#comments-container-flex .comment-btn-reported, #btn-reported {
+   font-size: 10px;
+    padding: 2px;
+    text-align: right;
+    margin: 5px 20px;
+    
+}
+
+
+
+#reported-form {
+    display: none;
+}
+#reported-form label {
+    font-size: 12px;
+}
+#reported-form input {
+    margin-left: 20px;
+}
+
+
+
+#btn-form-submit {
+    margin: 0 20px;
+    align-self: center;
+}
 footer {
     display: flex;
     height: 50px;

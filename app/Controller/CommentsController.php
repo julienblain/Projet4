@@ -15,7 +15,6 @@ class CommentsController extends AppController {
     }
 
     public function commentsComment() {
-        //QUESTION sur le curl
         //controle du capcha
         $privatekey ="	6LeeBzoUAAAAACGrDkWN57IvmfIxCZjfC2x-DdVr";
         $remoteip = $_SERVER["REMOTE_ADDR"];
@@ -41,18 +40,6 @@ class CommentsController extends AppController {
 
         // Parse data
         $recaptcha = json_decode($curlData, true);
-        //var_dump($recaptcha);
-        //var_dump($_POST);
-        if ($recaptcha["success"]) {
-            echo "Success!";
-        }
-
-        else {
-            //TODO gestion erreur
-            echo "Failure!";
-        }
-
-
         //fin recaptcha
         $postId = \explode('.', $_GET['p']);
         $postId = $postId[1];
@@ -61,13 +48,27 @@ class CommentsController extends AppController {
         $email = $_POST['email'];
         $addressIp = $_SERVER['REMOTE_ADDR'];
 
-        $controlReported = $this->Reported->countReported($email);
+        if(($content == "") || ($email == "")) {
+            echo "Vous n'avez pas renseigné d'email ou de contenu. Votre commentaire ne peut etre pris en compte.";
+        } else {
+            if ($recaptcha["success"]) {
+                echo '<p class="action-validation">Merci pour votre commentaire. </p>';
+                    $controlReported = $this->Reported->countReported($email);
 
-        if($controlReported[0] > 0) {
-            return $this->render('posts.reported');
-        }
+                if($controlReported[0] > 0) {
+                    return $this->render('posts.reported');
+                }
 
-        $this->Comments->insert($postId, $author, $email, $content, $addressIp);
+                $this->Comments->insert($postId, $author, $email, $content, $addressIp);
+            }
+
+            else {
+                //TODO gestion erreur
+                echo '<p class="action-validation">Une erreur s\'est produite nous n\'avons pas pu enregistré votre commentaire. </p>';
+            };
+
+        };
+     
         $this->render('posts.addComment');
     }
 

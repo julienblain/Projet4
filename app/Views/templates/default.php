@@ -11,10 +11,10 @@
         //TODO gerer le style de tinymce
             App::getInstance()->titlePage ?>
         </title>
-        
-        <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet"> <!-- text font-family  -->
+        <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC" rel="stylesheet"> <!-- title, admin font-family-->
 
-        <link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet"><!-- menu font-family-->
         
         <link rel="stylesheet" type="text/css" href="http://localhost/Projet4/public/css/style.css"/>
 

@@ -1,13 +1,13 @@
 
-  
-  
+
+
    <div id='postAndComments-index'>
    <div id="book">
     </div>
     <div id="book-box">
-    
+
    </div>
-   
+
    <div id="post-index-container">
        <div class="postTitle">
         <?= $post[0]->title?>
@@ -15,45 +15,69 @@
                         echo   $date->format('d.m.Y');
                     ?>
 
-    </div>  
-    <div id="postContent"><?= $post[0]->content ?></div>
-    
+    </div>
+    <div id="postContent"><?= $post[0]->content ?><p id="endChap">Fin du Chapitre.</p></div>
+
   </div>
- 
+
 
 
 <div id="post-index-btn" class="btn">
    <!-- caractere special en html-->
     <button id="book-previous" class="btn-book">&lsaquo;</button>
     <button id="book-after"  class="btn-book">&rsaquo;</button>
-    
+
+
+
+    <div class="comments">
+       <div id="comments-btn">
+            <button type="button" name="button" id="btn-comment">Commenter</button>
+            <button id="btn-readComment" type="button" name="btn-readComment">Lire les commentaires</button>
+        </div>
+        <!--QUESTION required ne fonctionne pas -->
+        <form id ="form-comment" action="?p=comments.<?= $post[0]->id ?>.comment" method="post">
+           <div id="form-comment-flex">
+                <label for="author"> Auteur : 
+                    <input type="text" name="author" value=" " >
+                </label>
+                <label for="email"> Email : 
+                    <input type="email" name="email" value=" " required>
+                </label>
+                <label for="content">Votre message : 
+                    <textarea id="form-comment-textarea" name="content" required></textarea>
+                </label>
+                <button id="btn-form-submit" class="g-recaptcha" data-sitekey="6LeeBzoUAAAAADGjPXOwCYobXVY6iUNjf3inFMQi" data-callback="onSubmit">Valider</button>
+            </div>
+        </form>
+        
+        <div id="comments-container">
+           <div id="comments-container-flex">
+                <h3>Commentaires :</h3>
+                <?php
+                foreach($comments as $comment) :
+                 ?>
+                 <div class="comments-backWhite">
+                   <p class="comment-author"><?= $comment->author ?></p>
+                    <p class="comment-date"><?= $comment->dateComment ?></p>
+                     
+                     <p class="comment-content"><?php echo $comment->contentComment; ?></p>
+                     <button id="btn-reported" class="comment-btn-reported" type="button" name="button">Signaler</button> 
+                     
+                     <form id="reported-form" action="?p=comments.<?= $post[0]->id ?>.reported.<?= $comment->idComment ?>" method="post">
+                         <label for="">Veuillez renseigner votre email : 
+                             <input type="email" name="email" value="" required>
+                        </label>
+                         <button id="btn-reported" type="submit" name="button">Valider</button>
+
+                 </form>
+
+                 </div>
+                 
+            
+             <?php endforeach; ?>
+        </div>
+     </div>
+    </div>
 </div>
-<div class="comments">
-    <button type="button" name="button">Commenter</button>
-    <form id ="form-comment" action="?p=comments.<?= $post[0]->id ?>.comment" method="post">
-        <label for=""> Auteur : </label>
-        <input type="text" name="author" value="">
-        <label for=""> Email : </label>
-        <input type="email" name="email" value="" required>
-        <textarea name="content" rows="8" cols="80"></textarea>
-        <button class="g-recaptcha" data-sitekey="6LeeBzoUAAAAADGjPXOwCYobXVY6iUNjf3inFMQi" data-callback="onSubmit">Valider</button>
-    </form>
-    <p>Commentaire :</p>
-    <?php
-    foreach($comments as $comment) :
-     ?>
-     <p><?= $comment->dateComment ?></p>
-     <p><?= $comment->author ?></p>
-     <p><?php echo $comment->contentComment; ?></p>
-     <button type="button" name="button">Signaler</button>
-     <form class="reported-form" action="?p=comments.<?= $post[0]->id ?>.reported.<?= $comment->idComment ?>" method="post">
-         <label for="">Veuillez renseigner votre email</label>
-         <input type="email" name="email" value="" required>
-         <button type="submit" name="button">Valider</button>
 
-     </form>
-
-
- <?php endforeach; ?>
-</div>
 </div>
