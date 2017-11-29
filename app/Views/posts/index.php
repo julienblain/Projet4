@@ -58,7 +58,13 @@
                  ?>
                  <div class="comments-backWhite">
                    <p class="comment-author"><?= $comment->author ?></p>
-                    <p class="comment-date"><?= $comment->dateComment ?></p>
+                    <p class="comment-date">
+                     Le <?php $date = DateTime::createFromFormat('Y-m-d H:i:s', $comment->dateComment);
+                        echo   $date->format('d.m.Y'). ' à ' .$date->format('H').'h '.$date->format('i').'min '.$date->format('s').'s';
+                    ?>
+                    
+                    
+                    </p>
                      
                      <p class="comment-content"><?php echo $comment->contentComment; ?></p>
                      <button id="btn-reported" class="comment-btn-reported" type="button" name="button">Signaler</button> 

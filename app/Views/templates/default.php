@@ -42,16 +42,16 @@
         <div id="main">
 
             <header>
-            <h1 class=""><a href="?posts.index"> Jean Forteroche </a></h1>
+            <h1 class=""><a href="http://localhost/Projet4/public/index.php?posts.index"> Jean Forteroche </a></h1>
             <p id="titleBook">Billet simple pour l'Alaska</p>
             <!--TODO changer le nom du fichier  -->
 
      <?php  include($this->viewPath . "/templates/nav.php");?>
 
             </header>
-           
+           <div id="content">
             <?php echo $content; ?>
-            
+            </div>
             
             <footer>
                 <a href="http://localhost/Projet4/public/Forteroche/index.php">Espace Admin</a>

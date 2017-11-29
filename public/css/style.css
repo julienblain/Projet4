@@ -33,6 +33,10 @@ header {
     padding: 0 30px;
 }
 
+#content {
+    min-height: 90vh;
+}
+
 /*/////  NAV   /////*/
 
 h1 a, #nav-container, .nav-post-title a, #titleBook {
