@@ -1,32 +1,42 @@
-<?php include($this->viewPath."/admin/index.php"); ?>
+<?php include_once($this->viewPath."/admin/index.php"); ?>
 
 
-<button><a href="?p=posts.<?= $post[0]->id ?>.delete">Supprimer</a></button>
+<div id='postAndComments-index'>
+    <div id="book">
+    </div>
+    <div id="book-box">
 
-    <p>TITRE DU BILLET : <?= $post[0]->title?></p>
-    <p>Date : Le <?php
-                    $date = DateTime::createFromFormat('Y-m-d H:i:s', $post[0]->datePost);
-                    echo   $date->format('d.m.Y');
-                ?></p>
+    </div>
+
+    <div id="post-index-container">
+           <div class="postTitle">
+               
+               
+               
+               <?= $post[0]->title?>
+                Le
+                <?php $date = DateTime::createFromFormat('Y-m-d H:i:s', $post[0]->datePost);
+                        echo   $date->format('d.m.Y');
+                    ?>
+               
+        </div>
+        <div id="postContent"><p id="firstChild-bug-js"></p><!-- pour éviter les bug js sur le slide-->
+               <?= $post[0]->content ?><p id="endChap">Fin du Chapitre.</p><!-- pour éviter les bug js sur le slide -->
+        </div>
+
+    </div>
 
 
-    <p><?= $post[0]->content ?></p>
-</div>
-<div class="comments">
-    <p>Commentaire :</p>
-    <?php var_dump($comments);
-    foreach($comments as $comment) :
-     ?>
-      <p><?php echo $comment->dateComment; ?></p>
-       <p><?php echo $comment->author; ?></p>
-        <p><?php echo $comment->mail; ?></p>
-     <p><?php echo $comment->contentComment; ?></p>
-     <button type="button" name="button">
-         <a href="?p=comments.<?= $comment->idComment ?>.delete.(<?=
-              $comment->mail ?>).<?=
-              $comment->addressIp ?>">
 
-              Supprimer</a>
-     </button>
- <?php endforeach; ?>
+    <div id="post-index-btn" class="btn">
+        <!-- caractere special en html-->
+        <button id="book-previous" class="btn-book">&lsaquo;</button>
+        <button id="book-after" class="btn-book">&rsaquo;</button>
+
+
+
+        
+
+    </div>
+
 </div>

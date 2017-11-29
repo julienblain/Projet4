@@ -229,7 +229,6 @@ h1 a:hover, #nav-container:hover {
 
 }
 .btn-book {
-    filter: 100%;
     background: rgba(255,255,255,0);
     border: 0;
     cursor: pointer;

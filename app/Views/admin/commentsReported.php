@@ -7,9 +7,9 @@
             <li class="comments-backWhite">
                
                  
-                 <p class="megrim nb-reported">Nombre de signalement : <?= $comment->reportedComment?></p>
-                 <p class="bowlby numChap">Chapitre <?= $comment->idPost ?></p>
-                 <p class="megrim email-reported"><?= $comment->mail?></p>
+                 <p class="bowlby nb-reported">Nombre de signalement : <?= $comment->reportedComment?></p>
+                 <p class="megrim numChap">Chapitre <?= $comment->idPost ?></p>
+                 <p class="bowlby email-reported"><?= $comment->mail?></p>
                
                
                 <p class="comment-author"><?= $comment->author?></p>

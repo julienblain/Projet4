@@ -1,6 +1,4 @@
 
-
-
    <div id='postAndComments-index'>
    <div id="book">
     </div>
@@ -16,7 +14,7 @@
                     ?>
 
     </div>
-    <div id="postContent"><?= $post[0]->content ?><p id="endChap">Fin du Chapitre.</p></div>
+    <div id="postContent"><p id="firstChild-bug-js"></p><!-- pour éviter les bug js sur le slide--><?= $post[0]->content ?><p id="endChap">Fin du Chapitre.</p><!-- pour éviter les bug js sur le slide --></div>
 
   </div>
 

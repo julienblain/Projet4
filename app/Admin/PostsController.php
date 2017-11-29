@@ -17,9 +17,10 @@ class PostsController extends AppController {
         $app = App::getInstance();
         $postId = \explode('.', $_GET['p']);
         $postId = $postId[1];
+         $postsTitle = $this->Posts->queryTitles();
         $post = $this->Posts->queryPostSelected($postId);
         $comments = $this->Comments->queryCommentsById($postId);
-        $this->render('admin.read', compact('post', 'comments'));
+        $this->render('admin.read', compact('postsTitle', 'post', 'comments'));
     }
 
     public function postsDelete() {
