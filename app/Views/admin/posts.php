@@ -3,15 +3,19 @@
 <?php include($this->viewPath."admin/commentsReported.php"); ?>
 
 
-<ul>Liste de chapitre :
-    <?php foreach($postsTitle as $postTitle): ?>
-        <li class="post-title">
-            <a href="?p=posts.<?= $postTitle->id ?>.selected">
-                <?= $postTitle->title ?>
-            </a>
-            <a href="?p=posts.<?= $postTitle->id ?>.selected"><button>Lire</button></a>
-            <a href="?p=posts.<?= $postTitle->id ?>.update"><button>Modifer</button></a>
-            <a href="?p=posts.<?= $postTitle->id ?>.delete"><button>Supprimer</button></a>
-        </li>
-    <?php endforeach; ?>
-</ul>
+<section id="posts-listing">
+   <h2>Liste des chapitre : </h2>
+    <ul>
+        <?php foreach($postsTitle as $postTitle): ?>
+           
+            <li class="">
+                <a class="post-listing-title" href="?p=posts.<?= $postTitle->id ?>.selected">
+                    <p><?= $postTitle->id. '.'?></p> <?= $postTitle->title ?>
+                </a>
+                <a class="btn-bowlby" href="?p=posts.<?= $postTitle->id ?>.selected">Lire</a>
+                <a class="btn-bowlby" href="?p=posts.<?= $postTitle->id ?>.update">Modifer</a>
+                <a class="btn-bowlby" href="?p=posts.<?= $postTitle->id ?>.delete">Supprimer</a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</section>
