@@ -8,8 +8,8 @@
     <ul>
         <?php foreach($postsTitle as $postTitle): ?>
            
-            <li class="">
-                <a class="post-listing-title" href="?p=posts.<?= $postTitle->id ?>.selected">
+            <li>
+                <a class="post-listing-title bowlby" href="?p=posts.<?= $postTitle->id ?>.selected">
                     <p><?= $postTitle->id. '.'?></p> <?= $postTitle->title ?>
                 </a>
                 <a class="btn-bowlby" href="?p=posts.<?= $postTitle->id ?>.selected">Lire</a>

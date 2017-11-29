@@ -16,11 +16,12 @@ input, textarea {
 }
 
 .bowlby {
-     font-family: 'Megrim', cursive;
+   
+    font-family: 'Bowlby One SC', cursive;
 }
 
 .megrim {
-     font-family: 'Bowlby One SC', cursive;
+       font-family: 'Megrim', cursive;
 }
 
 h2 {
@@ -508,4 +509,21 @@ footer a:hover {
     display: flex;
     align-items: baseline;
     color: black;
+}
+
+/*/////////// View create       ///////////*/
+
+#create {
+    margin: 40px;
+}
+
+#create label, #btn-create {
+    margin: 20px 10px;
+}
+
+#post-title {
+    height: 20vh;
+}
+#post-content {
+    height: 50vh;
 }
