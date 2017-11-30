@@ -1,12 +1,12 @@
 
-   <div id='postAndComments-index'>
+   <section id='postAndComments-index'>
    <div id="book">
     </div>
     <div id="book-box">
 
    </div>
 
-   <div id="post-index-container">
+   <article id="post-index-container">
        <div class="postTitle">
         <?= $post[0]->title?>
         Le <?php $date = DateTime::createFromFormat('Y-m-d H:i:s', $post[0]->datePost);
@@ -16,7 +16,7 @@
     </div>
     <div id="postContent"><p id="firstChild-bug-js"></p><!-- pour éviter les bug js sur le slide--><?= $post[0]->content ?><p id="endChap">Fin du Chapitre.</p><!-- pour éviter les bug js sur le slide --></div>
 
-  </div>
+  </article>
 
 
 
@@ -27,7 +27,7 @@
 
 
 
-    <div class="comments">
+    <aside class="comments">
        <div id="comments-btn">
             <button type="button" name="button" id="btn-comment">Commenter</button>
             <button id="btn-readComment" type="button" name="btn-readComment">Lire les commentaires</button>
@@ -81,7 +81,7 @@
              <?php endforeach; ?>
         </div>
      </div>
-    </div>
+    </aside>
 </div>
 
-</div>
+</section>

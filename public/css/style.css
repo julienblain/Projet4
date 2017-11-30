@@ -15,6 +15,10 @@ input, textarea {
     padding: 5px;
 }
 
+section {
+    margin-top: 50px;
+}
+
 .bowlby {
    
     font-family: 'Bowlby One SC', cursive;
@@ -395,8 +399,7 @@ footer a:hover {
 
 /*///////  View admin/connection     /////////////*/
 #hello-connection {
-    margin-left: 30px;
-    margin-bottom: 30px;;
+    margin: 50px 30px 30px 30px;
 }
 
 #form-connection {
@@ -433,8 +436,8 @@ footer a:hover {
 }
 
 #admin-comments-reported {
-    margin: 40px;
-    padding: 20px;
+    margin: 50px 40px;
+    
   
     
 }
@@ -470,8 +473,8 @@ footer a:hover {
 }
 
 #posts-listing {
-    margin: 40px;
-    padding: 20px;
+    margin: 50px 40px;
+    
     
    
 }
@@ -525,4 +528,14 @@ footer a:hover {
 }
 #post-content {
     height: 50vh;
+}
+
+/*//////////   View admin/read      ///////////*/
+#admin-nb-reported {
+    width: 67%;
+}
+
+#admin-btn-delete-comment {
+    text-decoration: none;
+    margin: 5px;
 }
