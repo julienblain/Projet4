@@ -1,1 +1,1 @@
-<p>Le signalement fut ignoré</p>
+<p class='notification'>Le signalement fut ignoré.</p>

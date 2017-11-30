@@ -83,7 +83,6 @@ class MysqlDatabase {
 
     public function update($statement, $array) {
         $req = $this->getPdo()->prepare($statement);
-        echo 'ici';
         $req->execute($array);
         $req->closeCursor();
     }
@@ -104,7 +103,6 @@ class MysqlDatabase {
 
     public function updateOne($statement) {
         $req = $this->getPdo()->exec($statement);
-        var_dump($req);
     }
 
 

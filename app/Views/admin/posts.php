@@ -1,6 +1,6 @@
-<?php include($this->viewPath."/admin/index.php"); ?>
+<?php include_once($this->viewPath."admin/nav.php"); ?>
 
-<?php include($this->viewPath."admin/commentsReported.php"); ?>
+<?php include_once($this->viewPath."admin/commentsReported.php"); ?>
 
 
 <section id="posts-listing">

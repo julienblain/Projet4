@@ -2,9 +2,10 @@
 namespace App\Admin;
 use App\Controller\AppController;
 use \App;
+use App\Admin\LoggedController;
 
 class CommentsController extends AppController {
-
+//TODO factoriser
     public function __construct() {
         parent::__construct(); //sinon redefinition de construct qui donne le viewPath
         //appel loadModel du parent
@@ -16,12 +17,14 @@ class CommentsController extends AppController {
     public function commentsIgnore() {
         $app = App::getInstance();
         $commentId = \explode('.', $_GET['p']);
-        var_dump($commentId);
         $commentId = $commentId[1];
         $nbReported = 0;
         $this->Comments->updateComment($commentId, $nbReported);
-        //$this->Reported->
-        $this->render('admin.ignore');
+        
+        include_once($this->viewPath."admin/ignore.php");
+        $index = new LoggedController;
+        return $index->adminIndex();
+        
     }
 
     public function commentsDelete() {
@@ -32,11 +35,13 @@ class CommentsController extends AppController {
         //on eleve les parentheses
         $mail = str_replace('(', '',$mail);
         $mail = str_replace(')', '',$mail);
-        $addressIp = $comment[5];
-        $this->Reported->addReporting($mail, $addressIp);
+        $this->Reported->addReporting($mail);
         $this->Comments->deleteComment($commentId);
-        $this->render('admin.deleteComment');
-
+        
+        include_once($this->viewPath."admin/deleteComment.php");
+        $index = new LoggedController;
+        return $index->adminIndex();
+    
     }
 
 

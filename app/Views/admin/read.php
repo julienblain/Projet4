@@ -1,4 +1,4 @@
-<?php include_once($this->viewPath."/admin/index.php");  ?>
+<?php include_once($this->viewPath."/admin/nav.php");  ?>
  
 
 <section id='postAndComments-index'>

@@ -47,7 +47,7 @@
                 <button id="btn-form-submit" class="g-recaptcha" data-sitekey="6LeeBzoUAAAAADGjPXOwCYobXVY6iUNjf3inFMQi" data-callback="onSubmit">Valider</button>
             </div>
         </form>
-        
+<!--TODO changer la semantique html-->
         <div id="comments-container">
            <div id="comments-container-flex">
                 <h3>Commentaires :</h3>
@@ -65,13 +65,13 @@
                     </p>
                      
                      <p class="comment-content"><?php echo $comment->contentComment; ?></p>
-                     <button id="btn-reported" class="comment-btn-reported" type="button" name="button">Signaler</button> 
+                     <button class="comment-btn-reported" type="button" name="button">Signaler</button> 
                      
-                     <form id="reported-form" action="?p=comments.<?= $post[0]->id ?>.reported.<?= $comment->idComment ?>" method="post">
+                     <form class="reported-form" action="?p=comments.<?= $post[0]->id ?>.reported.<?= $comment->idComment ?>" method="post">
                          <label for="">Veuillez renseigner votre email : 
                              <input type="email" name="email" value="" required>
                         </label>
-                         <button id="btn-reported" type="submit" name="button">Valider</button>
+                         <button class="btn-reported-submit" type="submit" name="button">Valider</button>
 
                  </form>
 

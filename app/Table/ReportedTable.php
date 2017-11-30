@@ -24,14 +24,13 @@ class ReportedTable extends Table {
         );
     }
 
-    public function addReporting($mail, $addressIp) {
+    public function addReporting($mail) {
         return $this->insertInto(
-            ('INSERT INTO reported(mailReported, address)
-            VALUES(:mail, :address)'),
+            ('INSERT INTO reported(mailReported)
+            VALUES(:mail)'),
 
             (array(
-                'mail' => $mail,
-                'address' => $addressIp
+                'mail' => $mail
             ))
         );
     }

@@ -1,4 +1,4 @@
-<?php include($this->viewPath."/admin/index.php"); ?>
+<?php include($this->viewPath."/admin/nav.php"); ?>
 
 
 <section id="update">

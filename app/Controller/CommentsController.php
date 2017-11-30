@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+use App\Controller\PostsController;
 
 
 class CommentsController extends AppController {
@@ -15,6 +16,8 @@ class CommentsController extends AppController {
     }
 
     public function commentsComment() {
+        //TODO externaliser
+        //QUESTION utiliser le captcha pour les signalements ?
         //controle du capcha
         $privatekey ="	6LeeBzoUAAAAACGrDkWN57IvmfIxCZjfC2x-DdVr";
         $remoteip = $_SERVER["REMOTE_ADDR"];
@@ -52,7 +55,6 @@ class CommentsController extends AppController {
             echo "Vous n'avez pas renseigné d'email ou de contenu. Votre commentaire ne peut etre pris en compte.";
         } else {
             if ($recaptcha["success"]) {
-                echo '<p class="action-validation">Merci pour votre commentaire. </p>';
                     $controlReported = $this->Reported->countReported($email);
 
                 if($controlReported[0] > 0) {
@@ -68,11 +70,14 @@ class CommentsController extends AppController {
             };
 
         };
-     
-        $this->render('posts.addComment');
+        include_once($this->viewPath."posts/addComment.php");
+        $index = new PostsController;
+        return $index->index();
     }
 
     public function commentsReported() {
+        
+        //TODO faire le controle des signalant
         $id = \explode('.', $_GET['p']);
         $postId = $id[1];
         $commentId = $id[3];
@@ -91,8 +96,12 @@ class CommentsController extends AppController {
             $nbReported = $nbReported->reportedComment +1;
             $this->Comments->updateComment($commentId, $nbReported);
 
+            //on inclut la vue de remercieement et on retourne à l'index
+            include_once($this->viewPath."posts/reporting.php");
+            $index = new PostsController;
+            return $index->index();
 
-            return $this->render('posts.reporting');
+          
 
 
     }

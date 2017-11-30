@@ -20,7 +20,7 @@ class PostsController extends AppController {
          $postsTitle = $this->Posts->queryTitles();
         $post = $this->Posts->queryPostSelected($postId);
         $comments = $this->Comments->queryCommentsById($postId);
-        $this->render('admin.read', compact('postsTitle', 'post', 'comments'));
+        return $this->render('admin.read', compact('postsTitle', 'post', 'comments'));
     }
 
     public function postsDelete() {
@@ -29,7 +29,9 @@ class PostsController extends AppController {
         $postId = $postId[1];
         $this->Posts->deletePostById($postId);
         $this->Comments->deleteCommentsByIdPost($postId);
-        $this->render('admin.delete');
+        include_once($this->viewPath.'/admin/delete.php');
+        $index = new LoggedController;
+        return $index->adminIndex();
 
     }
 
@@ -39,7 +41,7 @@ class PostsController extends AppController {
         $postId = $postId[1];
         $post = $this->Posts->queryPostSelected($postId);
         $comments = $this->Comments->queryCommentsById($postId);
-        $this->render('admin.update', compact('post'));
+        return $this->render('admin.update', compact('post'));
     }
 
     public function postsUpdated() {
@@ -51,13 +53,16 @@ class PostsController extends AppController {
         $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
         $post = $this->Posts->updatedPost($postId, $postTitle, $postContent);
-        $this->render('admin.updated');
+        
+        include_once($this->viewPath.'/admin/updated.php');
+        $index = new LoggedController;
+        return $index->adminIndex();
 
     }
 
     public function postsCreate() {
 
-        $this->render('admin.create');
+        return $this->render('admin.create');
     }
 
     public function postsCreated() {
@@ -65,7 +70,10 @@ class PostsController extends AppController {
         $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
         $this->Posts->insert($postTitle, $postContent);
-        $this->render('admin.created');
+        
+        include_once($this->viewPath.'/admin/created.php');
+        $index = new LoggedController;
+        return $index->adminIndex();
     }
 
 

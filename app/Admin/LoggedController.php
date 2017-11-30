@@ -14,25 +14,23 @@ use Core\Auth\DBAuth;
          $auth = new DBAuth($app->getDb());
 
          //verif login
-         if(isset($_POST['login']) && isset($_POST['password'])) {
+         if(isset($_SESSION['auth'])) {
+              return $this->adminIndex();
+         }
+         elseif (isset($_POST['login']) && isset($_POST['password'])) {
+            
              $login = htmlspecialchars($_POST['login']);
              $password = htmlspecialchars($_POST['password']);
 
              if($auth->login($login, $password, true) === true) {
                  $_SESSION['auth'] = $login;
-
-
                   return $this->adminIndex();
-
              }
-             else {
+              else {
                  //envoie vers la forbidden du controller;
-             return $this->forbidden('admin.errors');
+                 include_once($this->viewPath."admin/errors.php");
+             return $this->connectionPage();
              }
-
-         }
-         elseif (isset($_SESSION['auth'])) {
-             return $this->adminIndex();
          }
          else {
              $this->connectionPage();

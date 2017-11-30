@@ -14,7 +14,13 @@ $("#btn-readComment").click(function() {
     $("#comments-container").toggle(500);
 });
 
-$("#btn-reported").click(function() {
-    $("#btn-reported").hide();
-    $("#reported-form").slideToggle(500);
+$(".comment-btn-reported").click(function() {
+    var form = $(this).siblings(".reported-form");
+    $(this).hide();
+    form.slideToggle(500);
 });
+
+/* notification */
+if(document.getElementsByClassName("notification")) {
+   $(".notification").delay(5000).fadeOut('slow');
+}
