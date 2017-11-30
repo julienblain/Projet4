@@ -513,13 +513,13 @@ footer a:hover {
     color: black;
 }
 
-/*/////////// View create       ///////////*/
+/*/////////// View create and update      ///////////*/
 
-#create {
+#create, #update {
     margin: 40px;
 }
 
-#create label, #btn-create {
+#create label, #btn-create, #update label, #btn-update {
     margin: 20px 10px;
 }
 
@@ -539,3 +539,5 @@ footer a:hover {
     text-decoration: none;
     margin: 5px;
 }
+
+/*//////////////    View admin/update        /////////////////////////////*/
