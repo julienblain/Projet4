@@ -16,6 +16,9 @@ class PostsController extends AppController {
         //TODO a factoriser dans AppController ?
         $app = App::getInstance();
         $postId = \explode('.', $_GET['p']);
+
+
+
         $postId = $postId[1];
          $postsTitle = $this->Posts->queryTitles();
         $post = $this->Posts->queryPostSelected($postId);
@@ -50,10 +53,7 @@ class PostsController extends AppController {
         $postId = \explode('.', $_GET['p']);
         $postId = $postId[1];
 
-        /* for the layout*/
-        $postTitle = htmlspecialchars($_POST['postTitle']);
-        $postTitle = '<div>'.$postTitle. '</div>';
-        
+        $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
         $post = $this->Posts->updatedPost($postId, $postTitle, $postContent);
 

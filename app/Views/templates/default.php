@@ -7,8 +7,7 @@
 	    <!--a verifier <meta name="robots" content="index"> -->
 
         <title><?= //TODO ou placer tinymce ?
-        //TODO mettre le js en objet
-        //TODO gerer le style de tinymce
+        
             App::getInstance()->titlePage ?>
         </title>
         <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet"> <!-- text font-family  -->
@@ -18,10 +17,9 @@
 
         <link rel="stylesheet" type="text/css" href="http://localhost/Projet4/public/css/style.css"/>
 
-        <script type="text/javascript" src="http://localhost/Projet4/public/Forteroche/tinymce/js/tinymce/tinymce.min.js"></script>
-
        
-        <!-- TODO recaptach invisible a mettre dans un fichier -->
+        <!--QUESTION on met les scripts dans les vu ou dans le default-->
+         <script type="text/javascript" src="http://localhost/Projet4/public/js/tinymce/tinymce.min.js"></script>
         <script src="https://www.google.com/recaptcha/api.js"></script>
     
 
@@ -51,16 +49,5 @@
         	<script type="text/javascript" src="http://localhost/Projet4/public/js/sliderBook.js"></script>
         	<script type="text/javascript" src="http://localhost/Projet4/public/js/functions.js"></script>
         	
-        	 <script>
-        
-         
-              function onSubmit(token) {
-              document.getElementById("form-comment").onsubmit = function() {console.log('ok')};
-             document.getElementById("form-comment").submit();
-        };
-             
-         
-    
-        </script>
     </body>
 </html>
