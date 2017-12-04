@@ -32,21 +32,28 @@
             <button type="button" name="button" id="btn-comment">Commenter</button>
             <button id="btn-readComment" type="button" name="btn-readComment">Lire les commentaires</button>
         </div>
-        <!--QUESTION required ne fonctionne pas -->
-        <form id ="form-comment" action="?p=comments.<?= $post[0]->id ?>.comment" method="post" onsubmit="validate()">
+        
+        <form id ="form-comment" action="?p=comments.<?= $post[0]->id ?>.comment" method="post">
            <div id="form-comment-flex">
                 <label for="author"> Auteur :
                     <input type="text" name="author" value=" " >
                 </label>
                 <label for="email"> Email :
-                    <input type="email" name="email" placeholder="Requis" required>
+                    <input id='form-comment-email'type="email" name="email" placeholder="Requis" required>
                 </label>
                 <label for="content">Votre message :
-                    <textarea id="form-comment-textarea" name="content" placeholder="Requis" required></textarea>
+                    <textarea id="form-comment-textarea" name="content" maxlength="500" placeholder="Requis" required></textarea>
                 </label>
-                <input type="submit" id="btn-form-submit" class="g-recaptcha" data-sitekey="6LeeBzoUAAAAADGjPXOwCYobXVY6iUNjf3inFMQi" data-callback="onSubmit">
-                <!--<button id="btn-form-submit">Valider</button>-->
-                 <!-- class="g-recaptcha" data-sitekey="6LeeBzoUAAAAADGjPXOwCYobXVY6iUNjf3inFMQi" data-callback="onSubmit" -->
+                
+                <input type="hidden" name="gRecaptchaResponse" id="gRecaptchaResponse" value=""/>
+                
+                <div id="form-group">
+                    <div id='recaptcha' class='g-recaptcha' data-sitekey="6LeeBzoUAAAAADGjPXOwCYobXVY6iUNjf3inFMQi" data-callback="SubmitRegistration" data-size="invisible"
+                    ></div>
+                    
+                    <button type='submit' id='btn-form-submit'> Valider</button>
+                </div>
+             
             </div>
         </form>
 <!--TODO changer la semantique html-->
