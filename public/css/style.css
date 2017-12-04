@@ -524,7 +524,8 @@ footer a:hover {
 }
 
 #post-title {
-    height: 20vh;
+    margin-bottom: 20px;
+    width: 100%;
 }
 #post-content {
     height: 50vh;

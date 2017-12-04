@@ -16,15 +16,13 @@ class CommentsController extends AppController {
     }
 
     public function commentsComment() {
-        //TODO externaliser
-        //QUESTION utiliser le captcha pour les signalements ?
-        //controle du capcha
         $privatekey ="	6LeeBzoUAAAAACGrDkWN57IvmfIxCZjfC2x-DdVr";
         $remoteip = $_SERVER["REMOTE_ADDR"];
         $url = "https://www.google.com/recaptcha/api/siteverify";
 
         // Form info
-
+        echo'recaptcha';
+        
         $response = $_POST["g-recaptcha-response"];
 
         // Curl Request
@@ -76,7 +74,7 @@ class CommentsController extends AppController {
     }
 
     public function commentsReported() {
-        
+
         //TODO faire le controle des signalant
         $id = \explode('.', $_GET['p']);
         $postId = $id[1];
@@ -91,7 +89,7 @@ class CommentsController extends AppController {
         } else {
          $this->Reported->addEmail($email);
 */
-            
+
             $nbReported = $this->Comments->queryReported($commentId);
             $nbReported = $nbReported->reportedComment +1;
             $this->Comments->updateComment($commentId, $nbReported);
@@ -101,7 +99,7 @@ class CommentsController extends AppController {
             $index = new PostsController;
             return $index->index();
 
-          
+
 
 
     }

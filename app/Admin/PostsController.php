@@ -13,7 +13,7 @@ class PostsController extends AppController {
     }
 
     public function postsSelected() {
-        //TODO a factoriser
+        //TODO a factoriser dans AppController ?
         $app = App::getInstance();
         $postId = \explode('.', $_GET['p']);
         $postId = $postId[1];
@@ -50,10 +50,13 @@ class PostsController extends AppController {
         $postId = \explode('.', $_GET['p']);
         $postId = $postId[1];
 
-        $postTitle = $_POST['postTitle'];
+        /* for the layout*/
+        $postTitle = htmlspecialchars($_POST['postTitle']);
+        $postTitle = '<div>'.$postTitle. '</div>';
+        
         $postContent = $_POST['postContent'];
         $post = $this->Posts->updatedPost($postId, $postTitle, $postContent);
-        
+
         include_once($this->viewPath.'/admin/updated.php');
         $index = new LoggedController;
         return $index->adminIndex();
@@ -61,6 +64,7 @@ class PostsController extends AppController {
     }
 
     public function postsCreate() {
+        //TODO verifier les elements de mise en page de tinymce
 
         return $this->render('admin.create');
     }
@@ -70,7 +74,7 @@ class PostsController extends AppController {
         $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
         $this->Posts->insert($postTitle, $postContent);
-        
+
         include_once($this->viewPath.'/admin/created.php');
         $index = new LoggedController;
         return $index->adminIndex();

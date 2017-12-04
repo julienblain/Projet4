@@ -20,11 +20,11 @@ class CommentsController extends AppController {
         $commentId = $commentId[1];
         $nbReported = 0;
         $this->Comments->updateComment($commentId, $nbReported);
-        
+
         include_once($this->viewPath."admin/ignore.php");
         $index = new LoggedController;
         return $index->adminIndex();
-        
+
     }
 
     public function commentsDelete() {
@@ -35,13 +35,14 @@ class CommentsController extends AppController {
         //on eleve les parentheses
         $mail = str_replace('(', '',$mail);
         $mail = str_replace(')', '',$mail);
+        //TODO ajouter le mail et le pseudo, si pseudo mettre dans la vue le nom qui pose pb
         $this->Reported->addReporting($mail);
         $this->Comments->deleteComment($commentId);
-        
+
         include_once($this->viewPath."admin/deleteComment.php");
         $index = new LoggedController;
         return $index->adminIndex();
-    
+
     }
 
 

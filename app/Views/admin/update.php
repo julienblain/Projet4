@@ -3,10 +3,12 @@
 
 <section id="update">
        <form method="post" action="?p=posts.<?=$post[0]->id?>.updated">
-            <label class="bowlby" for="postTitle"> Titre : </label>
-            <textarea  id="post-title" name="postTitle">
-                <?= $post[0]->title ?>
-            </textarea>
+            <label class="bowlby" for="postTitle"> 
+                Titre : <input  id="post-title" name="postTitle" value="<?=
+                    strip_tags($post[0]->title); ?>">
+                
+            </label>
+        
             <br>
             <label class="bowlby" for="postContent">Contenu : </label>
             <textarea  id="post-content" name="postContent">

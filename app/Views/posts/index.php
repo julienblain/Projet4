@@ -21,7 +21,7 @@
 
 
 <div id="post-index-btn" class="btn">
-   <!-- caractere special en html-->
+   <!-- caractere special en html fleche-->
     <button id="book-previous" class="btn-book">&lsaquo;</button>
     <button id="book-after"  class="btn-book">&rsaquo;</button>
 
@@ -33,18 +33,20 @@
             <button id="btn-readComment" type="button" name="btn-readComment">Lire les commentaires</button>
         </div>
         <!--QUESTION required ne fonctionne pas -->
-        <form id ="form-comment" action="?p=comments.<?= $post[0]->id ?>.comment" method="post">
+        <form id ="form-comment" action="?p=comments.<?= $post[0]->id ?>.comment" method="post" onsubmit="validate()">
            <div id="form-comment-flex">
-                <label for="author"> Auteur : 
+                <label for="author"> Auteur :
                     <input type="text" name="author" value=" " >
                 </label>
-                <label for="email"> Email : 
-                    <input type="email" name="email" value=" " required>
+                <label for="email"> Email :
+                    <input type="email" name="email" placeholder="Requis" required>
                 </label>
-                <label for="content">Votre message : 
-                    <textarea id="form-comment-textarea" name="content" required></textarea>
+                <label for="content">Votre message :
+                    <textarea id="form-comment-textarea" name="content" placeholder="Requis" required></textarea>
                 </label>
-                <button id="btn-form-submit" class="g-recaptcha" data-sitekey="6LeeBzoUAAAAADGjPXOwCYobXVY6iUNjf3inFMQi" data-callback="onSubmit">Valider</button>
+                <input type="submit" id="btn-form-submit" class="g-recaptcha" data-sitekey="6LeeBzoUAAAAADGjPXOwCYobXVY6iUNjf3inFMQi" data-callback="onSubmit">
+                <!--<button id="btn-form-submit">Valider</button>-->
+                 <!-- class="g-recaptcha" data-sitekey="6LeeBzoUAAAAADGjPXOwCYobXVY6iUNjf3inFMQi" data-callback="onSubmit" -->
             </div>
         </form>
 <!--TODO changer la semantique html-->
@@ -60,15 +62,15 @@
                      Le <?php $date = DateTime::createFromFormat('Y-m-d H:i:s', $comment->dateComment);
                         echo   $date->format('d.m.Y'). ' à ' .$date->format('H').'h '.$date->format('i').'min '.$date->format('s').'s';
                     ?>
-                    
-                    
+
+
                     </p>
-                     
+
                      <p class="comment-content"><?php echo $comment->contentComment; ?></p>
-                     <button class="comment-btn-reported" type="button" name="button">Signaler</button> 
-                     
+                     <button class="comment-btn-reported" type="button" name="button">Signaler</button>
+
                      <form class="reported-form" action="?p=comments.<?= $post[0]->id ?>.reported.<?= $comment->idComment ?>" method="post">
-                         <label for="">Veuillez renseigner votre email : 
+                         <label for="">Veuillez renseigner votre email :
                              <input type="email" name="email" value="" required>
                         </label>
                          <button class="btn-reported-submit" type="submit" name="button">Valider</button>
@@ -76,8 +78,8 @@
                  </form>
 
                  </div>
-                 
-            
+
+
              <?php endforeach; ?>
         </div>
      </div>
