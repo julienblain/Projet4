@@ -403,13 +403,17 @@ footer a:hover {
 
 #form-connection {
     display: flex;
-    margin-left: 30px;
+    margin: 0 30px 0 30px;
     flex-direction: column;
 }
 #form-connection label {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
+#form-connection input {
+    margin-bottom: 20px;
+    width: 200px;
+}
 #form-connection button {
     width: 80px;
     margin-left: 60px;
@@ -611,10 +615,29 @@ footer a:hover {
     #comments-container-flex .btn-reported-submit {
         font-size: 14px;
     }
+    
+    /*<<<<<<<<<<<<<<<  connexion view          <<<<<<<<<<<<<<<<<<*/
+    #form-connection input {
+        margin-left: 20px;
+        margin-top: 10px;
+    }
 }
+
+    
+
 
 
 @media all and (max-device-width: 750px) {
+    
+    /*<<<<<<<<<<<<< genera      <<<<<<<<<<<<*/
+    #content {
+        font-size: 35px;
+    }
+    
+    .btn-bowlby {
+        font-size: 25;
+    }
+    
     /*<<<<<<<<<<<< Accueil     <<<<<<<<<<<<<*/
     header{
         height: 200px;
@@ -743,4 +766,17 @@ footer a:hover {
     
     .postTitle {
         font-size: 35px;
+    }
+    
+    
+    /*<<<<<<<<<  connection view           <<<<<<<<<<<<<<<*/
+    
+    #form-connection input{
+        width: 400px;
+        padding: 20px;
+    }
+    
+    #form-connection button {
+        width: 150px;
+        padding: 10px;
     }

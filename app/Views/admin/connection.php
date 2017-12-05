@@ -2,10 +2,12 @@
 
 <form id='form-connection' action="?p=logged.connection" method="post">
     <label for="login">
-        Login : <input type="text" name="login" required>
+        Login :
     </label>
+     <input type="text" name="login" required>
     <label for="password">
-        Mot de passe : <input type="password" name="password" required>
+        Mot de passe : 
     </label>
+    <input type="password" name="password" required>
     <button type="submit" name="btn-connection" class="btn-bowlby">Valider</button>
 </form>
