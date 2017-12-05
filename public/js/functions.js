@@ -50,8 +50,10 @@ function validateMail(mail) {
 };
 
 function onload() {
+    if(document.getElementById('btn-form-submit')) {
         var element = document.getElementById('btn-form-submit');
         element.onclick = validate;
+    }
 };
 
 
