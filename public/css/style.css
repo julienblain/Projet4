@@ -73,6 +73,7 @@ h2 {
 
 header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     background-color: rgb(0,0,0);
     
@@ -555,3 +556,157 @@ footer a:hover {
     font-family: 'Bowlby One SC', cursive;
     font-size: 14px;
 }
+
+
+/*////////////////////     RESPONSIVE    /////////////*/
+@media all and (max-device-width: 1024px) {
+    /*<<<<<  Accueil        <<<<<<*/
+    .postTitle {
+        font-size: 16px;
+    }
+    
+    #postContent {
+        font-size: 17px;
+    }
+    
+    .comments button {
+        font-size: 15px;
+    }
+    
+    #form-comment-flex {
+        font-size: 20px;
+    }
+    
+    #form-comment-flex p {
+        /* QUESTIONS input et marge margin-bottom: 10px;*/
+    }
+    #form-comment-textarea {
+        margin-top: 0;
+    }
+    
+    
+    #comments-container-flex h3 {
+        font-size: 20px;
+    }
+    
+    .comment-author, .comment-date, .reported-form label {
+        font-size: 17px;
+    }
+    
+    .reported-form label {
+      display: flex;
+        padding: 10px;
+        padding-right: 20px;
+        align-items: center;
+    }
+    
+    .reported-form input {
+        
+    }
+    
+    .comment-content {
+        font-size: 20px;
+    }
+    #comments-container-flex .comment-btn-reported,
+    #comments-container-flex .btn-reported-submit {
+        font-size: 14px;
+    }
+}
+
+
+@media all and (max-device-width: 750px) {
+    /*<<<<<<<<<<<< Accueil     <<<<<<<<<<<<<*/
+    header{
+        height: 200px;
+    }
+    
+    h1 , header #nav-container {
+       font-size: 40px;
+        margin-top: 30px;
+    } 
+    
+    h1 a {
+        font-size: 40px;
+    }
+    
+    header #titleBook {
+        -webkit-order: 1;
+            order: 1;
+        width: 100%;
+        text-align: center;
+        font-size: 40px;
+    }
+    
+    #nav-public {
+        top: 107px;
+    }
+    
+    .nav-post-title a {
+        font-size: 35px;
+    }
+    
+    .btn-book {
+        font-size: 60px;
+        margin: 0 30px 30px 30px;
+        
+    }
+    
+    #comments-btn {
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    
+    #btn-comment, #btn-readComment {
+        font-size: 30px;
+        width: 500px;
+        padding: 10px 0;
+        margin: 20px;
+    }
+    
+    #form-comment-flex p {
+        font-size: 30px;
+    }
+    
+    #form-comment-flex input,
+    #form-comment-flex textarea {
+        margin: 15px 0 0 15px;
+        font-size: 25px;
+        width: 690px;
+        margin: 15px 0 15px 15px;
+    }
+    
+    #btn-form-submit {
+        font-size: 25px;
+        padding: 10px;
+        
+    }
+    
+    #comments-container-flex h3 {
+        font-size: 30px;
+    }
+    
+    .comment-author, .comment-date {
+        font-size: 25px;
+    }
+    
+    .comment-date {
+        width: 70%;
+    }
+    
+    .comment-author {
+        width: 30%;
+    }
+    
+    .comment-content {
+        font-size: 30px;
+    }
+    
+    .comment-btn-reported {
+        font-size: 20px;
+        padding: 5px;
+    }
+    
+    footer a {
+        font-size: 20px;
+    }

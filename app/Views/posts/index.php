@@ -35,13 +35,13 @@
         
         <form id ="form-comment" action="?p=comments.<?= $post[0]->id ?>.comment" method="post">
            <div id="form-comment-flex">
-                <label for="author"> Auteur :
+                <label for="author"> <p>Auteur :</p>
                     <input type="text" name="author" value=" " >
                 </label>
-                <label for="email"> Email :
+                <label for="email"> <p>Email :</p>
                     <input id='form-comment-email'type="email" name="email" placeholder="Requis" required>
                 </label>
-                <label for="content">Votre message :
+                <label for="content"><p>Votre message :</p>
                     <textarea id="form-comment-textarea" name="content" maxlength="500" placeholder="Requis" required></textarea>
                 </label>
                 
@@ -77,7 +77,7 @@
                      <button class="comment-btn-reported" type="button" name="button">Signaler</button>
 
                      <form class="reported-form" action="?p=comments.<?= $post[0]->id ?>.reported.<?= $comment->idComment ?>" method="post">
-                         <label for="">Veuillez renseigner votre email :
+                         <label for=""><p>Veuillez renseigner votre email :  </p>
                              <input type="email" name="email" value="" required>
                         </label>
                          <button class="btn-reported-submit" type="submit" name="button">Valider</button>
