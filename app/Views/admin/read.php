@@ -44,8 +44,8 @@
                 foreach($comments as $comment) :
                  ?>
                  <div class="comments-backWhite">
-                  <p id="admin-nb-reported"class="bowlby nb-reported">Nombre de signalement : <?= $comment->reportedComment?></p>
-                   <p class="bowlby email-reported"><?= $comment->mail?></p>
+                  <p class="admin-nb-reported"class="bowlby nb-reported">Nombre de signalement : <?= $comment->reportedComment?></p>
+                   <p class="bowlby admin-email-reported"><?= $comment->mail?></p>
                   
                    <p class="comment-author"><?= $comment->author ?></p>
                     <p class="comment-date">
@@ -60,7 +60,7 @@
                      <p class="comment-content"><?php echo $comment->contentComment; ?></p>
                  
         
-                <a  id="admin-btn-delete-comment" class="btn-bowlby" href="?p=comments.<?= $comment->idComment ?>.delete.<?=
+                <a  class="btn-bowlby admin-btn-delete-comment" href="?p=comments.<?= $comment->idComment ?>.delete.<?=
                      $comment->mail ?>.<?=
                      $comment->addressIp ?>">
 
