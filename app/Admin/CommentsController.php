@@ -31,12 +31,23 @@ class CommentsController extends AppController {
         $app = App::getInstance();
         $comment = \explode('.', $_GET['p']);
         $commentId = $comment[1];
-        $mail = $comment[3].'.'.$comment[4];
+        $addressIp =$comment[5];
         //on eleve les parentheses
         $mail = str_replace('(', '',$mail);
         $mail = str_replace(')', '',$mail);
-        //TODO ajouter le mail et le pseudo, si pseudo mettre dans la vue le nom qui pose pb
-        $this->Reported->addReporting($mail);
+
+        //recuperation du count reported
+        $controlIpReported = $this->Reported->countIpReported($addressIp);
+        if($controlIpReported == false) {
+            $countReported = 1;
+            $this->Reported->addUserReporting($addressIp, $countReported);
+        }
+        else {
+            $countReported = $controlIpReported[0] + 1;
+            echo $countReported;
+            $this->Reported->addReporting($addressIp, $countReported);
+        }
+
         $this->Comments->deleteComment($commentId);
 
         include_once($this->viewPath."admin/deleteComment.php");

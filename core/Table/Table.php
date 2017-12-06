@@ -57,8 +57,6 @@ class Table {
         return $this->db->countPrepare($statement);
     }
 
-
-
 }
 
  ?>

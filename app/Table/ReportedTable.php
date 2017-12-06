@@ -7,39 +7,37 @@ class ReportedTable extends Table {
 
     protected $table = 'reported';
 
-    public function countReported($email) {
+    // public function countMailReported($email) {
+    //     return $this->countPrepare(
+    //        "SELECT countReported FROM reported
+    //         WHERE reported.mailReported = '{$email}'"
+    //    );
+    //  }
+
+    public function countIpReported($addressIp) {
         return $this->countPrepare(
-            "SELECT COUNT(*) FROM reported
-            WHERE reported.mailReported = '{$email}'"
-        );
-
-    }
-
-    public function addEmail($email) {
-        return $this->insertInto(
-            ('INSERT INTO reported(mailReported)
-            VALUES(:email)'),
-
-            (array('email' => $email))
+            "SELECT countReported FROM reported
+            WHERE reported.addressIpReported = '{$addressIp}'"
         );
     }
 
-    public function addReporting($mail) {
+    public function addUserReporting($addressIp, $countReported) {
         return $this->insertInto(
-            ('INSERT INTO reported(mailReported)
-            VALUES(:mail)'),
+            ('INSERT INTO reported(addressIpReported, countReported)
+            VALUES(:addressIp, :countReported)'),
 
             (array(
-                'mail' => $mail
+                'addressIp' => $addressIp,
+                'countReported' => $countReported
             ))
         );
     }
 
+    public function addReporting($addressIp, $countReported) {
+        return $this->updateOne(
+            "UPDATE reported SET countReported = {$countReported}
+            WHERE addressIpReported = {$addressIp}");
 
-
-
-
-
-
+    }
 
 }

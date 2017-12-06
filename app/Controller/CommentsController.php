@@ -20,9 +20,6 @@ class CommentsController extends AppController {
         $remoteip = $_SERVER["REMOTE_ADDR"];
         $url = "https://www.google.com/recaptcha/api/siteverify";
 
-        // Form info
-        echo'recaptcha';
-        
         $response = $_POST["g-recaptcha-response"];
 
         // Curl Request
@@ -49,58 +46,59 @@ class CommentsController extends AppController {
         $email = $_POST['email'];
         $addressIp = $_SERVER['REMOTE_ADDR'];
 
+        /*cas bug recaptcha bug ou js désactivé*/
         if(($content == "") || ($email == "")) {
-            echo "Vous n'avez pas renseigné d'email ou de contenu. Votre commentaire ne peut etre pris en compte.";
+            echo "<p class='notification'>Vous n'avez pas renseigné d'email ou de contenu. <br>
+            Votre commentaire ne peut etre pris en compte. </p>";
         } else {
             if ($recaptcha["success"]) {
-                    $controlReported = $this->Reported->countReported($email);
-
-                if($controlReported[0] > 0) {
-                    return $this->render('posts.reported');
+                // l'utilisateur est il dans la bdd des reported
+                    $controlIpReported = $this->Reported->countIpReported($addressIp);
+                if(($controlIpReported[0]) > 3) {
+                    include_once($this->viewPath.'posts/reported.php');
                 }
 
                 $this->Comments->insert($postId, $author, $email, $content, $addressIp);
+                include_once($this->viewPath."posts/addComment.php");
             }
 
             else {
                 //TODO gestion erreur
-                echo '<p class="action-validation">Une erreur s\'est produite nous n\'avons pas pu enregistré votre commentaire. </p>';
+                echo '<p class="notification">Oups,ne erreur s\'est produite nous n\'avons pas pu enregistrer votre commentaire. </p>';
             };
 
         };
-        include_once($this->viewPath."posts/addComment.php");
+
         $index = new PostsController;
         return $index->index();
     }
 
     public function commentsReported() {
-
-        //TODO faire le controle des signalant
         $id = \explode('.', $_GET['p']);
         $postId = $id[1];
         $commentId = $id[3];
-        $email = $_POST['email'];
+        $addressIp = $_SERVER['REMOTE_ADDR'];
 
-        /*controle du mail du signaleur
-        $reported = $this->Reported->count($email);
-
-        if ($reported[0] == 1 ) {
-            return $this->render('posts.reported');
+        $controlIpReported = $this->Reported->countIpReported($addressIp);
+        if($controlIpReported[0] > 3) {
+            include_once($this->viewPath.'posts/reported.php');
         } else {
-         $this->Reported->addEmail($email);
-*/
-
             $nbReported = $this->Comments->queryReported($commentId);
-            $nbReported = $nbReported->reportedComment +1;
+
+            if(isset($nbReported)) {
+                $nbReported = $nbReported->reportedComment +1;
+            }
+            else {
+                $nbReported = 1;
+            }
             $this->Comments->updateComment($commentId, $nbReported);
 
             //on inclut la vue de remercieement et on retourne à l'index
             include_once($this->viewPath."posts/reporting.php");
-            $index = new PostsController;
-            return $index->index();
+        }
 
-
-
-
+        $index = new PostsController;
+        return $index->index();
     }
+
 }
