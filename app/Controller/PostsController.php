@@ -44,6 +44,11 @@ class PostsController extends AppController {
         $this->render('posts.index', compact('post', 'comments', 'postsTitle'));
     }
 
+    public function error() {
+        include_once($this->viewPath.'posts/error.php');
+        $this->index();
+    }
+
 
 
 }

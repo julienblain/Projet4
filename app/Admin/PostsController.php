@@ -64,9 +64,9 @@ class PostsController extends AppController {
     }
 
     public function postsCreate() {
-        //TODO verifier les elements de mise en page de tinymce
 
-        return $this->render('admin.create');
+         $postsTitle = $this->Posts->queryTitles();
+        return $this->render('admin.create', compact('postsTitle'));
     }
 
     public function postsCreated() {

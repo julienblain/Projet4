@@ -31,11 +31,7 @@ class CommentsController extends AppController {
         $app = App::getInstance();
         $comment = \explode('.', $_GET['p']);
         $commentId = $comment[1];
-        $addressIp =$comment[5];
-        //on eleve les parentheses
-        $mail = str_replace('(', '',$mail);
-        $mail = str_replace(')', '',$mail);
-
+        $addressIp =$comment[3];
         //recuperation du count reported
         $controlIpReported = $this->Reported->countIpReported($addressIp);
         if($controlIpReported == false) {

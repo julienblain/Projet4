@@ -4,6 +4,7 @@ namespace Core\Table;
 
 class Table {
 
+    //QUESTION faut il un getter vu que c'est juste utilisé dans le constructeur
     //devine le nom de la table par rapport au nom du model
     protected $table;
     protected $db;

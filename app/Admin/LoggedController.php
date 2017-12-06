@@ -18,7 +18,7 @@ use Core\Auth\DBAuth;
               return $this->adminIndex();
          }
          elseif (isset($_POST['login']) && isset($_POST['password'])) {
-            
+
              $login = htmlspecialchars($_POST['login']);
              $password = htmlspecialchars($_POST['password']);
 
@@ -28,7 +28,7 @@ use Core\Auth\DBAuth;
              }
               else {
                  //envoie vers la forbidden du controller;
-                 include_once($this->viewPath."admin/errors.php");
+                 include_once($this->viewPath."admin/error.php");
              return $this->connectionPage();
              }
          }

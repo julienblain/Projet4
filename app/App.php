@@ -6,15 +6,23 @@
 
 use Core\Config;
 use Core\Database\MysqlDatabase;
+use App\Router;
 
 class App {
     public $titlePage = "Billet simple pour l'Alaska";
     private $_dbInstance;
     private static $_instance;
 
+    public function router() {
+            $route = new Router();
+            $getController = $route->getController();
+            $action = $route->getAction();
+            $controller = new $getController();
+            return $controller->$action();
+    }
+
     //chargement des autoloader et session start
     public function load () {
-        session_start();
         require ROOT . '/app/Autoloader.php';
         App\Autoloader::register();
         require ROOT . '/core/Autoloader.php';
