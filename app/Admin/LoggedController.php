@@ -8,17 +8,13 @@ use Core\Auth\DBAuth;
  class LoggedController  extends AppController {
 
      public function loggedConnection() {
-
          $app = App::getInstance();
-
          $auth = new DBAuth($app->getDb());
 
-         //verif login
          if(isset($_SESSION['auth'])) {
               return $this->adminIndex();
          }
          elseif (isset($_POST['login']) && isset($_POST['password'])) {
-
              $login = htmlspecialchars($_POST['login']);
              $password = htmlspecialchars($_POST['password']);
 
@@ -27,7 +23,7 @@ use Core\Auth\DBAuth;
                   return $this->adminIndex();
              }
               else {
-                 //envoie vers la forbidden du controller;
+                 // if login or password error
                  include_once($this->viewPath."admin/error.php");
              return $this->connectionPage();
              }

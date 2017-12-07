@@ -4,55 +4,49 @@ use \App;
 use App\Controller\AppController;
 
 class PostsController extends AppController {
+    public $postId;
 
     public function __construct() {
-        parent::__construct(); //sinon redefinition de construct qui donne le viewPath
-        //appel loadModel du parent
+        //viewPath is in parent class
+        parent::__construct();
+        //call the function loadModel of parent
         $this->loadModel('Posts');
         $this->loadModel('Comments');
     }
+//QUESTION getter, setter
+    public function setPost() {
+        $app = App::getInstance();
+        $this->postId = \explode('.', $_GET['p']);
+        $this->postId = $this->postId[1];
+    }
 
     public function postsSelected() {
-        //TODO a factoriser dans AppController ?
-        $app = App::getInstance();
-        $postId = \explode('.', $_GET['p']);
-
-
-
-        $postId = $postId[1];
-         $postsTitle = $this->Posts->queryTitles();
-        $post = $this->Posts->queryPostSelected($postId);
-        $comments = $this->Comments->queryCommentsById($postId);
+        $this->setPost();
+        $postsTitle = $this->Posts->queryTitles();
+        $post = $this->Posts->queryPostSelected($this->postId);
+        $comments = $this->Comments->queryCommentsById($this->postId);
         return $this->render('admin.read', compact('postsTitle', 'post', 'comments'));
     }
 
     public function postsDelete() {
-        $app = App::getInstance();
-        $postId = \explode('.', $_GET['p']);
-        $postId = $postId[1];
-        $this->Posts->deletePostById($postId);
-        $this->Comments->deleteCommentsByIdPost($postId);
+        $this->setPost();
+        $this->Posts->deletePostById($this->postId);
+        $this->Comments->deleteCommentsByIdPost($this->postId);
         include_once($this->viewPath.'/admin/delete.php');
+        // home view
         $index = new LoggedController;
         return $index->adminIndex();
-
     }
 
     public function postsUpdate() {
-        $app = App::getInstance();
-        $postId = \explode('.', $_GET['p']);
-        $postId = $postId[1];
-        $post = $this->Posts->queryPostSelected($postId);
-        $comments = $this->Comments->queryCommentsById($postId);
+        $this->setPost();
+        $post = $this->Posts->queryPostSelected($this->postId);
+        $comments = $this->Comments->queryCommentsById($this->postId);
         return $this->render('admin.update', compact('post'));
     }
 
     public function postsUpdated() {
-        //TODO a verifier les accents
-        $app = App::getInstance();
-        $postId = \explode('.', $_GET['p']);
-        $postId = $postId[1];
-
+        $this->setPost();
         $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
         $post = $this->Posts->updatedPost($postId, $postTitle, $postContent);
@@ -64,7 +58,6 @@ class PostsController extends AppController {
     }
 
     public function postsCreate() {
-
          $postsTitle = $this->Posts->queryTitles();
         return $this->render('admin.create', compact('postsTitle'));
     }
