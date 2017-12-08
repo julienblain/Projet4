@@ -14,7 +14,7 @@
                 </a>
                 <a class="btn-bowlby" href="?p=posts.<?= $postTitle->id ?>.selected">Lire</a>
                 <a class="btn-bowlby" href="?p=posts.<?= $postTitle->id ?>.update">Modifer</a>
-                <a id='btn-deletePost' class="btn-bowlby" href="?p=posts.<?= $postTitle->id ?>.delete">Supprimer</a>
+                <a class="btn-bowlby btn-deletePost" href="?p=posts.<?= $postTitle->id ?>.delete">Supprimer</a>
             </li>
         <?php endforeach; ?>
     </ul>

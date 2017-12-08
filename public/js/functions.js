@@ -1,6 +1,6 @@
  $(document).ready(function() {
      /* confirm post delete*/
-     $('#btn-deletePost').click(function(e) {
+     $('.btn-deletePost').click(function(e) {
          if (confirm('Voulez-vous supprimer le chapitre ?')) {
             return true;
          } else {
