@@ -6,11 +6,13 @@
 <section id="posts-listing">
    <h2>Liste des chapitre : </h2>
     <ul>
-        <?php foreach($postsTitle as $postTitle): ?>
+        <?php $i = 0;
+        foreach($postsTitle as $postTitle):
+            $i ++;?>
 
             <li>
                 <a class="post-listing-title bowlby" href="?p=posts.<?= $postTitle->id ?>.selected">
-                    <p><?= $postTitle->id. '.'?></p> <?= $postTitle->title ?>
+                    <p><?= $i . '.'?></p> <?= $postTitle->title ?>
                 </a>
                 <a class="btn-bowlby" href="?p=posts.<?= $postTitle->id ?>.selected">Lire</a>
                 <a class="btn-bowlby" href="?p=posts.<?= $postTitle->id ?>.update">Modifer</a>
