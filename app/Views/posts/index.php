@@ -8,10 +8,12 @@
 
    <article id="post-index-container">
        <div class="postTitle">
-        <?= $post[0]->title?>
-        Le <?php $date = DateTime::createFromFormat('Y-m-d H:i:s', $post[0]->datePost);
-                        echo   $date->format('d.m.Y');
-                    ?>
+           <p> <?= $post[0]->title?></p>
+           <p>Le
+           <?php $date = DateTime::createFromFormat('Y-m-d H:i:s', $post[0]->datePost);
+                   echo   $date->format('d.m.Y');
+               ?>
+           </p>
 
     </div>
     <div id="postContent"><p id="firstChild-bug-js"></p><!-- pour éviter les bug js sur le slide--><?= $post[0]->content ?><p id="endChap">Fin du Chapitre.</p><!-- pour éviter les bug js sur le slide --></div>
@@ -32,7 +34,7 @@
             <button type="button" name="button" id="btn-comment">Commenter</button>
             <button id="btn-readComment" type="button" name="btn-readComment">Lire les commentaires</button>
         </div>
-        
+
         <form id ="form-comment" action="?p=comments.<?= $post[0]->id ?>.comment" method="post">
            <div id="form-comment-flex">
                 <label for="author"> <p>Auteur :</p>
@@ -44,16 +46,16 @@
                 <label for="content"><p>Votre message :</p>
                     <textarea id="form-comment-textarea" name="content" maxlength="500" placeholder="Requis" required></textarea>
                 </label>
-                
+
                 <input type="hidden" name="gRecaptchaResponse" id="gRecaptchaResponse" value=""/>
-                
+
                 <div id="form-group">
                     <div id='recaptcha' class='g-recaptcha' data-sitekey="6LeeBzoUAAAAADGjPXOwCYobXVY6iUNjf3inFMQi" data-callback="SubmitRegistration" data-size="invisible"
                     ></div>
-                    
+
                     <button type='submit' id='btn-form-submit'> Valider</button>
                 </div>
-             
+
             </div>
         </form>
 <!--TODO changer la semantique html-->
