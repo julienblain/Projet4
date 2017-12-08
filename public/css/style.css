@@ -20,7 +20,7 @@ section {
 }
 
 .bowlby {
-   
+
     font-family: 'Bowlby One SC', cursive;
 }
 
@@ -32,7 +32,7 @@ h2 {
     font-family: 'Bowlby One SC', cursive;
     font-weight: 100;
     font-size: 17px;
-  
+
 }
 .btn-bowlby {
     font-family: 'Bowlby One SC', cursive;
@@ -76,7 +76,7 @@ header {
     flex-wrap: wrap;
     justify-content: space-between;
     background-color: rgb(0,0,0);
-    
+
     height: 80px;
     align-items: center;
     padding: 0 30px;
@@ -440,9 +440,9 @@ footer a:hover {
 
 #admin-comments-reported {
     margin: 50px 40px;
-    
-  
-    
+
+
+
 }
 
 #admin-comments-reported ul {
@@ -477,9 +477,9 @@ footer a:hover {
 
 #posts-listing {
     margin: 50px 40px;
-    
-    
-   
+
+
+
 }
 
 #posts-listing ul{
@@ -541,6 +541,12 @@ footer a:hover {
 /*//////////   View admin/read      ///////////*/
 .admin-nb-reported {
     width: 67%;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.admin-email-reported {
+    padding-right: 20px;
 }
 
 .admin-btn-delete-comment {
@@ -568,46 +574,46 @@ footer a:hover {
     .postTitle {
         font-size: 16px;
     }
-    
+
     #postContent {
         font-size: 17px;
     }
-    
+
     .comments button {
         font-size: 15px;
     }
-    
+
     #form-comment-flex {
         font-size: 20px;
     }
-    
+
     #form-comment-flex p {
         /* QUESTIONS input et marge margin-bottom: 10px;*/
     }
     #form-comment-textarea {
         margin-top: 0;
     }
-    
-    
+
+
     #comments-container-flex h3 {
         font-size: 20px;
     }
-    
+
     .comment-author, .comment-date, .reported-form label {
         font-size: 17px;
     }
-    
+
     .reported-form label {
       display: flex;
         padding: 10px;
         padding-right: 20px;
         align-items: center;
     }
-    
+
     .reported-form input {
-        
+
     }
-    
+
     .comment-content {
         font-size: 20px;
     }
@@ -615,7 +621,7 @@ footer a:hover {
     #comments-container-flex .btn-reported-submit {
         font-size: 14px;
     }
-    
+
     /*<<<<<<<<<<<<<<<  connexion view          <<<<<<<<<<<<<<<<<<*/
     #form-connection input {
         margin-left: 20px;
@@ -623,36 +629,36 @@ footer a:hover {
     }
 }
 
-    
+
 
 
 
 @media all and (max-device-width: 750px) {
-    
+
     /*<<<<<<<<<<<<< general      <<<<<<<<<<<<*/
     #content {
         font-size: 35px;
     }
-    
+
     .btn-bowlby {
         font-size: 25px;
         padding: 10px;
     }
-    
+
     /*<<<<<<<<<<<< Accueil     <<<<<<<<<<<<<*/
     header{
         height: 200px;
     }
-    
+
     h1 , header #nav-container {
        font-size: 40px;
         margin-top: 30px;
-    } 
-    
+    }
+
     h1 a {
         font-size: 40px;
     }
-    
+
     header #titleBook {
         -webkit-order: 1;
             order: 1;
@@ -660,42 +666,42 @@ footer a:hover {
         text-align: center;
         font-size: 40px;
     }
-    
+
     #nav-public {
         top: 107px;
     }
-    
+
     .nav-post-title a {
         font-size: 35px;
     }
-    
+
     .btn-book {
         font-size: 60px;
         margin: 0 30px 30px 30px;
-        
+
     }
-    
+
     #post-index-btn {
         padding-top: 1130px;
     }
-    
+
     #comments-btn {
         flex-direction: column;
         align-items: center;
-        
+
     }
-    
+
     #btn-comment, #btn-readComment {
         font-size: 30px;
         width: 500px;
         padding: 10px 0;
         margin: 20px;
     }
-    
+
     #form-comment-flex p {
         font-size: 30px;
     }
-    
+
     #form-comment-flex input,
     #form-comment-flex textarea {
         margin: 15px 0 0 15px;
@@ -703,94 +709,94 @@ footer a:hover {
         width: 690px;
         margin: 15px 0 15px 15px;
     }
-    
+
     #btn-form-submit {
         font-size: 25px;
         padding: 10px;
-        
+
     }
-    
+
     #comments-container-flex h3 {
         font-size: 30px;
     }
-    
+
     .comment-author, .comment-date {
         font-size: 25px;
     }
-    
+
     .comment-date {
         width: 70%;
     }
-    
+
     .comment-author {
         width: 30%;
     }
-    
+
     .comment-content {
         font-size: 30px;
     }
-    
+
     .comment-btn-reported {
         font-size: 20px;
         padding: 5px;
     }
-    
+
     /* TODO faire marge input*/
     /*QUESTION gestion des marges pour les input en responsive*/
-    
+
     footer a {
         font-size: 20px;
     }
-    
+
     /*----- bookslider    ------*/
 
     #book {
         background-image: none;
     }
-    
+
     #book-box {
         box-shadow: 0 30px 150px rgba(0,0,0,1);
     }
-    
+
     #book, #book-box, #post-index-container {
         height: 1100px;
     }
-    
+
     #postContent {
         height: 1000px;
         font-size: 35px;
     }
-    
+
     #postContent p {
         width: 750px;
     }
-    
+
     .postTitle {
         font-size: 35px;
     }
-    
-    
+
+
     /*<<<<<<<<<  connection view           <<<<<<<<<<<<<<<*/
-    
+
     #form-connection input{
         width: 400px;
         padding: 20px;
     }
-    
+
     #form-connection button {
         width: 150px;
         padding: 10px;
     }
-    
+
     /*<<<<<<<<<<<<   index admin       <<<<<<<<<<*/
     #nav-admin li {
         font-size: 40px;
     }
-    
+
      #admin-comments-reported h2, #posts-listing h2 {
-        font-size: 37px; 
+        font-size: 37px;
     }
-    
+
     .nb-reported, .email-reported {
         font-size: 30px;
         -webkit-order: 0;
@@ -798,50 +804,50 @@ footer a:hover {
         width: auto;
         min-width: 34%;
     }
-    
+
     .numChap {
         -webkit-order: 1;
             order: 1;
         width: 100%;
         font-size: 35px;
     }
-    
+
    #admin-comments-reported .comment-author, #admin-comments-reported .comment-date {
         -webkit-order: 2;
             order: 2;
        font-size: 30px;
     }
-    
+
     #admin-comments-reported .comment-content {
         -webkit-order: 3;
             order: 3;
         font-size: 35px;
     }
-    
+
     #admin-comments-reported .btn-bowlby {
         -webkit-order: 4;
             order: 4;
         font-size: 22px;
     }
-    
+
     .post-listing-title {
         width: 100%;
         justify-content: center;
     }
-    
+
     #posts-listing .btn-bowlby {
         font-size: 25px;
         margin: 20px 0 30px 0;
     }
-    
-    
+
+
     /*<<<<<<<<<   create view <<<<<<<<<<<<<*/
     #create #post-title {
         margin-bottom: 40px;
     }
-    
+
     /*QUESTION on peut pas changer le font size de tiny mce ? vu que c'est du js*/
-    
+
     /*<<<<<<<<<<<<< view read <<<<<<<<<<<<<<<*/
     .admin-nb-reported, .admin-email-reported {
         width: 100%;
