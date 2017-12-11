@@ -41,6 +41,7 @@
             </div>
 
             <footer>
+                <a href="http://localhost/Projet4/public/index.php?p=posts.legalNotice">Mentions légales</a>
                 <a href="http://localhost/Projet4/public/Forteroche/index.php">Espace Admin</a>
             </footer>
         </div>

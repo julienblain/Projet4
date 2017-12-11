@@ -49,6 +49,9 @@ class PostsController extends AppController {
         $this->index();
     }
 
+    public function legalNotice () {
+        $this->render('templates.legalNotice');
+    }
 
 
 }
