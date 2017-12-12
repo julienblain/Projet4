@@ -13,7 +13,7 @@ class CommentsTable extends Table {
             WHERE idPost = {$postId}
             ORDER BY idComment
             "
-        );//TODO oublie de l'ordre pour les commentaires
+        );
 
     }
 

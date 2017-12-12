@@ -13,7 +13,7 @@ class PostsController extends AppController {
         $this->loadModel('Posts');
         $this->loadModel('Comments');
     }
-//QUESTION getter, setter
+
     public function setPost() {
         $app = App::getInstance();
         $this->postId = \explode('.', $_GET['p']);

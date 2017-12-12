@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8">
         <meta name="description" content="Découvrer le nouveau roman de Jean Forteroche, 'Billet simple pour l'Alaska'.">
 	    <meta name="keywords" content="Forteroche, roman, Alaska">
-	    <!--a verifier <meta name="robots" content="index"> -->
 
         <title><?=
 
@@ -45,6 +44,6 @@
         	<script type="text/javascript" src="http://localhost/Projet4/public/js/functions.js">
 
         </script>
-        <script></script>
+
     </body>
 </html>

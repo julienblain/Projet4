@@ -14,13 +14,7 @@ class PostsController extends AppController {
 
     }
 
-    /*public function index() {
-        $posts = $this->Posts->queryIndex();
-        //render est dans core\controller\controller
-        //TODO a changer on recupere pas tout a l'index
-        $comments = $this->Comments->queryAll();
-        $this->render('posts.index', compact('posts', 'comments'));
-    }*/
+
 
     public function postsSelected() {
         $postId = \explode('.', $_GET['p']);

@@ -16,7 +16,6 @@ class CommentsController extends AppController {
     }
 
     public function commentsComment() {
-        //TODO try and catch
         $privatekey ="	6LeeBzoUAAAAACGrDkWN57IvmfIxCZjfC2x-DdVr";
         $remoteip = $_SERVER["REMOTE_ADDR"];
         $url = "https://www.google.com/recaptcha/api/siteverify";
@@ -64,7 +63,6 @@ class CommentsController extends AppController {
             }
 
             else {
-                //TODO gestion erreur
                 echo '<p class="notification">Oups,une erreur s\'est produite nous n\'avons pas pu enregistrer votre commentaire. </p>';
             };
 

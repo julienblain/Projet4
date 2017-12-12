@@ -40,13 +40,13 @@
 
         <div id="comments-container">
 
-           <div id="comments-container-flex">
+           <ul id="comments-container-flex">
                 <h3>Commentaires :</h3>
                 <?php
                 foreach($comments as $comment) :
                  ?>
-                 <div class="comments-backWhite">
-                  <p class="admin-nb-reported"class="bowlby nb-reported">Nombre de signalement : <?= $comment->reportedComment?></p>
+                 <li class="comments-backWhite">
+                  <p class="bowlby admin-nb-reported">Nombre de signalement : <?= $comment->reportedComment?></p>
                    <p class="bowlby admin-email-reported"><?= $comment->mail?></p>
 
                    <p class="comment-author"><?= $comment->author ?></p>
@@ -68,11 +68,11 @@
 
                      Supprimer</a>
 
-                 </div>
+                 </li>
 
 
              <?php endforeach; ?>
-        </div>
+        </ul>
      </div>
     </aside>
 

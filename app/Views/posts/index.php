@@ -7,7 +7,7 @@
    </div>
 
    <article id="post-index-container">
-       <div class="postTitle">
+       <h2 class="postTitle">
            <p> <?= $post[0]->title?></p>
            <p>Le
            <?php $date = DateTime::createFromFormat('Y-m-d H:i:s', $post[0]->datePost);
@@ -15,7 +15,7 @@
                ?>
            </p>
 
-    </div>
+    </h2>
     <div id="postContent"><p id="firstChild-bug-js"></p><!-- pour éviter les bug js sur le slide--><?= $post[0]->content ?><p id="endChap">Fin du Chapitre.</p><!-- pour éviter les bug js sur le slide --></div>
 
   </article>
@@ -37,13 +37,13 @@
 
         <form id ="form-comment" action="?p=comments.<?= $post[0]->id ?>.comment" method="post">
            <div id="form-comment-flex">
-                <label for="author"> <p>Auteur :</p>
-                    <input type="text" name="author" value=" " >
+                <label for="form-comment-author"> Auteur :
+                    <input id ="form-comment-author" type="text" name="author" value=" " >
                 </label>
-                <label for="email"> <p>Email :</p>
-                    <input id='form-comment-email'type="email" name="email" placeholder="Requis" required>
+                <label for="form-comment-email"> Email :
+                    <input id='form-comment-email' type="email" name="email" placeholder="Requis" required>
                 </label>
-                <label for="content"><p>Votre message :</p>
+                <label for="form-comment-textarea">Votre message :
                     <textarea id="form-comment-textarea" name="content" maxlength="500" placeholder="Requis" required></textarea>
                 </label>
 
@@ -58,14 +58,14 @@
 
             </div>
         </form>
-<!--TODO changer la semantique html-->
+
         <div id="comments-container">
-           <div id="comments-container-flex">
+           <ul id="comments-container-flex">
                 <h3>Commentaires :</h3>
                 <?php
                 foreach($comments as $comment) :
                  ?>
-                 <div class="comments-backWhite">
+                 <li class="comments-backWhite">
                    <p class="comment-author"><?= $comment->author ?></p>
                     <p class="comment-date">
                      Le <?php $date = DateTime::createFromFormat('Y-m-d H:i:s', $comment->dateComment);
@@ -79,18 +79,18 @@
                      <button class="comment-btn-reported" type="button" name="button">Signaler</button>
 
                      <form class="reported-form" action="?p=comments.<?= $post[0]->id ?>.reported.<?= $comment->idComment ?>" method="post">
-                         <label for=""><p>Veuillez renseigner votre email :  </p>
-                             <input type="email" name="email" value="" required>
+                         <label for="reported-form-email">Veuillez renseigner votre email :
+                             <input id="reported-form-email" type="email" name="email" value="" required>
                         </label>
                          <button class="btn-reported-submit" type="submit" name="button">Valider</button>
 
                  </form>
 
-                 </div>
+             </li>
 
 
              <?php endforeach; ?>
-        </div>
+        </ul>
      </div>
     </aside>
 </div>

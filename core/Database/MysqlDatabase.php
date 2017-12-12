@@ -38,7 +38,7 @@ class MysqlDatabase {
         return $this->_pdo;
     }
 
-    //TODO sur les exceptions et ecriture du log
+
     //recuperation des donnees grace a fecth
     public function query($statement, $one = false) {
         $req = $this->getPdo()->query($statement);
