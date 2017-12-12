@@ -17,7 +17,7 @@ class CommentsController extends AppController {
     }
 
     public function commentsIgnore() {
-        
+
         $commentId = \explode('.', $_GET['p']);
         $commentId = $commentId[1];
         $nbReported = 0;
@@ -42,7 +42,6 @@ class CommentsController extends AppController {
         }
         else {
             $countReported = $controlIpReported[0] + 1;
-            echo $countReported;
             $this->Reported->addReporting($addressIp, $countReported);
         }
 

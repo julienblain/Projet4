@@ -20,4 +20,8 @@ class AppController extends Controller {
         $this->$modelName = App::getInstance()->getTable($modelName);
     }
 
+    public function error() {
+        include_once($this->viewPath.'posts/error.php');
+    }
+
 }

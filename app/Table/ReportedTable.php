@@ -7,13 +7,6 @@ class ReportedTable extends Table {
 
     protected $table = 'reported';
 
-    // public function countMailReported($email) {
-    //     return $this->countPrepare(
-    //        "SELECT countReported FROM reported
-    //         WHERE reported.mailReported = '{$email}'"
-    //    );
-    //  }
-
     public function countIpReported($addressIp) {
         return $this->countPrepare(
             "SELECT countReported FROM reported

@@ -1,5 +1,6 @@
 <?php
 namespace Core\Database;
+use Core\Controller\Controller;
 
 class MysqlDatabase {
 
@@ -22,19 +23,16 @@ class MysqlDatabase {
         //pour eviter de multiple requete pdo
 
         if ($this->_pdo === null) {
-            try {
+
+
                 $pdo = new \PDO('mysql:host=' . $this->_dbHost . ';
                     dbname=' . $this->_dbName . ';
                     charset=utf8',
                     $this->_dbUser,
                     $this->_dbPassword
                 );
+                $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                 $this->_pdo = $pdo;
-            }
-            catch (Exception $e) {
-                die('Error : ' . $e->getMessage());
-            }
-
         }
 
         return $this->_pdo;
@@ -62,7 +60,7 @@ class MysqlDatabase {
         $req = $this->getPdo()->prepare($statement);
         $req->execute();
         $req->setFetchMode(\PDO::FETCH_OBJ); //recuperation des données sous forme d'objet
-    
+
         if($one) {
             $datas = $req->fetch();
         }

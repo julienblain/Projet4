@@ -14,13 +14,6 @@ class Router {
         $this->setPage();
         $this->setAction();
         $this->setController();
-
-        // echo $this->_serverSelfAdmin .' server <br>';
-        // var_dump( $this->_page) ;
-        // echo $this->controller .' controller <br>';
-        // echo $this->action .'action <br>';
-        //
-        // var_dump($_SESSION);
     }
 
     public function setServerSelfAdmin() {
@@ -42,7 +35,46 @@ class Router {
                 $this->_page = 'logged.connection';
         }
         elseif (isset($_GET['p'])){
+            //control des parametres
+            $control = $_GET['p'];
+            $control = \explode('.', $control);
+            if(
+                //verification de l'article et du comment dans le controleur
+                (($control[0] == 'posts') && ($control[2] == 'selected') && ((int) $control[1]))
+                ||
+                (($control[0] == 'comments') && ($control[2] == 'comment') && ((int) $control[1]))
+                ||
+                (($control[0] == 'comments') && ($control[2] == 'reported') && ((int) $control[1]) && ((int) $control[3]))
+                ||
+                (($control[0] == 'comments') && ($control[2] == 'ignore') && ((int) $control[1]))
+                ||
+                (($control[0] == 'comments') && ($control[2] == 'delete') && ((int) $control[1]) && ((int) $control[3]) && (isset($_SESSION['auth'])))
+                ||
+                (($control[0] == 'posts') && ($control[1] == 'create') && (isset($_SESSION['auth'])))
+                ||
+                (($control[0] == 'comments') && ($control[2] == 'delete') && ((int) $control[1]) && ((int) $control[3]) && (isset($_SESSION['auth'])))
+                ||
+                (($control[0] == 'logged') && ($control[1] == 'connection') && (isset($_SESSION['auth'])))
+                ||
+                (($control[0] == 'posts') && ((int)$control[1]) && ($control[2] == 'update') && (isset($_SESSION['auth'])))
+                ||
+                (($control[0] == 'posts') && ((int)$control[1]) && ($control[2] == 'update') && (isset($_SESSION['auth'])))
+                ||
+                (($control[0] == 'posts') && ((int)$control[1]) && ($control[2] == 'delete') && (isset($_SESSION['auth'])))
+
+            ) {
                 $this->_page = $_GET['p'];
+            }
+            else {
+                if(($this->_serverSelfAdmin == 1 )) {
+                    echo '<p class="notification">La page demandée n\'existe pas. </p>';
+                    $this->_page = 'logged.connection';
+                }
+                else {
+                    echo '<p class="notification">La page demandée n\'existe pas. </p>';
+                    $this->_page = 'posts.index';
+                }
+            }
         }
         elseif(isset($_GET['logout'])) {
             session_destroy();

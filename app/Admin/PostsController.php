@@ -24,6 +24,9 @@ class PostsController extends AppController {
         $this->setPost();
         $postsTitle = $this->Posts->queryTitles();
         $post = $this->Posts->queryPostSelected($this->postId);
+        if(empty($post)) {
+             return $this->error();
+        }
         $comments = $this->Comments->queryCommentsById($this->postId);
         return $this->render('admin.read', compact('postsTitle', 'post', 'comments'));
     }
@@ -32,6 +35,9 @@ class PostsController extends AppController {
         $this->setPost();
         $this->Posts->deletePostById($this->postId);
         $this->Comments->deleteCommentsByIdPost($this->postId);
+        if(empty($post)) {
+             return $this->error();
+        }
         include_once($this->viewPath.'/admin/delete.php');
         // home view
         $index = new LoggedController;

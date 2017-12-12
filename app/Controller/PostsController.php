@@ -27,6 +27,9 @@ class PostsController extends AppController {
         $postId = $postId[1];
 
         $post = $this->Posts->queryPostSelected($postId);
+        if(empty($post)) {
+            return $this->error();
+        }
         //on reprend la vue de posts.index qui a deja le nav
         $comments = $this->Comments->queryCommentsById($postId);
         $postsTitle = $this->Posts->queryTitles();
@@ -42,11 +45,6 @@ class PostsController extends AppController {
         $comments = $this->Comments->queryCommentsById($postId);
         $postsTitle = $this->Posts->queryTitles();
         $this->render('posts.index', compact('post', 'comments', 'postsTitle'));
-    }
-
-    public function error() {
-        include_once($this->viewPath.'posts/error.php');
-        $this->index();
     }
 
     public function legalNotice () {

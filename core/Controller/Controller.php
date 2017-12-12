@@ -21,13 +21,12 @@ class Controller {
     }
 
     protected function forbidden($view) {
-        //TODO faire la vaue
-        $this->render($view);
+        echo 'forbidden';
 
 
     }
 
-    protected function notFound() {
-        //TODO faire la vue
+    public function notFound() {
+        echo 'not found';
     }
 }

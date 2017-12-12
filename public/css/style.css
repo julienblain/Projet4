@@ -13,6 +13,7 @@ body {
 
 input, textarea {
     padding: 5px;
+    border: 1px solid black;
 }
 
 section {
@@ -376,9 +377,10 @@ footer {
     height: 50px;
     width: 100%;
     background: black;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding-right: 30px;
+    padding-left: 30px;
 }
 
 footer a {
@@ -397,6 +399,12 @@ footer a:hover {
 
 
 /*///////  View admin/connection     /////////////*/
+#connection-flex {
+    display: flex;;
+    flex-direction: column;
+    align-items: center;
+}
+
 #hello-connection {
     margin: 50px 30px 30px 30px;
 }
@@ -530,6 +538,9 @@ footer a:hover {
     margin: 20px 10px;
 }
 
+#mceu_11 {
+    border: 1px solid black;
+}
 #post-title {
     margin-bottom: 20px;
     width: 100%;
@@ -741,9 +752,6 @@ footer a:hover {
         padding: 5px;
     }
 
-    /* TODO faire marge input*/
-    /*QUESTION gestion des marges pour les input en responsive*/
-
     footer a {
         font-size: 20px;
     }
@@ -846,9 +854,20 @@ footer a:hover {
         margin-bottom: 40px;
     }
 
-    /*QUESTION on peut pas changer le font size de tiny mce ? vu que c'est du js*/
-
     /*<<<<<<<<<<<<< view read <<<<<<<<<<<<<<<*/
     .admin-nb-reported, .admin-email-reported {
         width: 100%;
     }
+}
+
+@media all and (max-device-width: 450px) {
+    /*<<<<<<<<<<  home <<<<<<<<<*/
+    #comments-container-flex .comment-btn-reported, #comments-container-flex .btn-reported-submit  {
+        font-size: 20px;
+        padding: 5px;
+    }
+
+    .reported-form p {
+        font-size: 25px;
+    }
+}

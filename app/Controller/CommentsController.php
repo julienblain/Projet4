@@ -16,6 +16,7 @@ class CommentsController extends AppController {
     }
 
     public function commentsComment() {
+        //TODO try and catch
         $privatekey ="	6LeeBzoUAAAAACGrDkWN57IvmfIxCZjfC2x-DdVr";
         $remoteip = $_SERVER["REMOTE_ADDR"];
         $url = "https://www.google.com/recaptcha/api/siteverify";
@@ -41,9 +42,9 @@ class CommentsController extends AppController {
         //fin recaptcha
         $postId = \explode('.', $_GET['p']);
         $postId = $postId[1];
-        $author = $_POST['author'];
-        $content = $_POST['content'];
-        $email = $_POST['email'];
+        $author = htmlspecialchars($_POST['author']);
+        $content = htmlspecialchars($_POST['content']);
+        $email = htmlspecialchars($_POST['email']);
         $addressIp = $_SERVER['REMOTE_ADDR'];
 
         /*cas bug recaptcha bug ou js désactivé*/
@@ -64,7 +65,7 @@ class CommentsController extends AppController {
 
             else {
                 //TODO gestion erreur
-                echo '<p class="notification">Oups,ne erreur s\'est produite nous n\'avons pas pu enregistrer votre commentaire. </p>';
+                echo '<p class="notification">Oups,une erreur s\'est produite nous n\'avons pas pu enregistrer votre commentaire. </p>';
             };
 
         };
@@ -84,6 +85,10 @@ class CommentsController extends AppController {
             include_once($this->viewPath.'posts/reported.php');
         } else {
             $nbReported = $this->Comments->queryReported($commentId);
+            if(empty($nbReported)) {
+
+                return $this->error();
+            }
 
             if(isset($nbReported)) {
                 $nbReported = $nbReported->reportedComment +1;
