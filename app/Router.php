@@ -1,7 +1,6 @@
 <?php
 namespace App;
 
-//QUESTION ROUTER ok ? appelé via App
 class Router {
     protected $action;
     protected $controller;

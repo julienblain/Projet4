@@ -1,8 +1,8 @@
 <?php include($this->viewPath."/admin/nav.php"); ?>
-
+<script type="text/javascript" src="http://localhost/Projet4/public/js/tinymce/tinymce.min.js"></script>
    <section id="create">
        <form method="post" action="?p=posts.created">
-            <label class="bowlby" for="postTitle"> 
+            <label class="bowlby" for="postTitle">
                 Titre : <input id="post-title" name="postTitle">
             </label>
             <br>
