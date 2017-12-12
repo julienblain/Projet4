@@ -35,9 +35,6 @@ class PostsController extends AppController {
         $this->setPost();
         $this->Posts->deletePostById($this->postId);
         $this->Comments->deleteCommentsByIdPost($this->postId);
-        if(empty($post)) {
-             return $this->error();
-        }
         include_once($this->viewPath.'/admin/delete.php');
         // home view
         $index = new LoggedController;
@@ -55,7 +52,7 @@ class PostsController extends AppController {
         $this->setPost();
         $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
-        $post = $this->Posts->updatedPost($postId, $postTitle, $postContent);
+        $post = $this->Posts->updatedPost($this->postId, $postTitle, $postContent);
 
         include_once($this->viewPath.'/admin/updated.php');
         $index = new LoggedController;

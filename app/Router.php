@@ -39,6 +39,14 @@ class Router {
             $control = \explode('.', $control);
             if(
                 //verification de l'article et du comment dans le controleur
+                (($control[0] == 'posts') && ($control[1] == 'create') && (isset($_SESSION['auth'])))
+                ||
+                (($control[0] == 'posts') && ($control[1] == 'created') && (isset($_SESSION['auth'])))
+                ||
+                (($control[0] == 'logged') && ($control[1] == 'connection') && (isset($_SESSION['auth'])))
+                ||
+                (($control[0] == 'posts') && ($control[1] == 'legalNotice'))
+                ||
                 (($control[0] == 'posts') && ($control[2] == 'selected') && ((int) $control[1]))
                 ||
                 (($control[0] == 'comments') && ($control[2] == 'comment') && ((int) $control[1]))
@@ -49,19 +57,14 @@ class Router {
                 ||
                 (($control[0] == 'comments') && ($control[2] == 'delete') && ((int) $control[1]) && ((int) $control[3]) && (isset($_SESSION['auth'])))
                 ||
-                (($control[0] == 'posts') && ($control[1] == 'create') && (isset($_SESSION['auth'])))
-                ||
-                (($control[0] == 'comments') && ($control[2] == 'delete') && ((int) $control[1]) && ((int) $control[3]) && (isset($_SESSION['auth'])))
-                ||
-                (($control[0] == 'logged') && ($control[1] == 'connection') && (isset($_SESSION['auth'])))
-                ||
                 (($control[0] == 'posts') && ((int)$control[1]) && ($control[2] == 'update') && (isset($_SESSION['auth'])))
                 ||
-                (($control[0] == 'posts') && ((int)$control[1]) && ($control[2] == 'update') && (isset($_SESSION['auth'])))
+                (($control[0] == 'posts') && ((int)$control[1]) && ($control[2] == 'updated') && (isset($_SESSION['auth'])))
                 ||
                 (($control[0] == 'posts') && ((int)$control[1]) && ($control[2] == 'delete') && (isset($_SESSION['auth'])))
 
             ) {
+
                 $this->_page = $_GET['p'];
             }
             else {
