@@ -267,7 +267,7 @@ border: 2px dashed black;
 
 #form-comment-textarea {
     margin-top: 10px;
-    width: 700px;
+    width: 100%;
     height: 70px;
 }
 
@@ -537,6 +537,7 @@ footer a:hover {
 
 #mceu_11 {
     border: 1px solid black;
+    padding: 2px;
 }
 #post-title {
     margin-bottom: 20px;
@@ -849,18 +850,35 @@ footer a:hover {
     }
 }
 
-@media all and (max-device-width: 450px) {
+@media all and (max-device-width: 480px) {
     /*<<<<<<<<<<  home <<<<<<<<<*/
     #comments-container-flex .comment-btn-reported, #comments-container-flex .btn-reported-submit {
-        font-size: 20px;
+        font-size: 23px;
         padding: 5px;
     }
 
-    .reported-form label, .reported-form-input, #form-comment-flex label, .notification, #form-connection input, #create input, #create textarea, #update input, #update textarea {
-        font-size: 25px;
-    }
-    
     .admin-nb-reported, .admin-email-reported {
         font-size: 25px;
     }
+
+    input, label, textarea,
+    .reported-form label, .reported-form-input,
+    #form-comment-flex label, #form-comment-flex input, #form-comment-flex textarea,
+    .notification,
+    .comment-content,
+    #form-connection input, #create input, #create textarea, #update input, #update textarea,
+    footer a {
+        font-size: 35px;
+    }
+
+    #comments-container-flex h3,
+    #postContent {
+        font-size: 37px;
+    }
+
+    footer {
+        height: 100px;
+    }
+
+
 }
