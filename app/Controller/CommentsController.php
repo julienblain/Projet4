@@ -45,6 +45,8 @@ class CommentsController extends AppController {
         $content = htmlspecialchars($_POST['content']);
         $email = htmlspecialchars($_POST['email']);
         $addressIp = $_SERVER['REMOTE_ADDR'];
+        //pour qu'addressIp reste total lors du traitement
+        $addressIp = str_replace(".", "", $addressIp);
 
         /*cas bug recaptcha bug ou js désactivé*/
         if(($content == "") || ($email == "")) {
@@ -57,9 +59,12 @@ class CommentsController extends AppController {
                 if(($controlIpReported[0]) > 3) {
                     include_once($this->viewPath.'posts/reported.php');
                 }
+                else {
+                    $this->Comments->insert($postId, $author, $email, $content, $addressIp);
+                    include_once($this->viewPath."posts/addComment.php");
+                }
 
-                $this->Comments->insert($postId, $author, $email, $content, $addressIp);
-                include_once($this->viewPath."posts/addComment.php");
+
             }
 
             else {
@@ -77,6 +82,8 @@ class CommentsController extends AppController {
         $postId = $id[1];
         $commentId = $id[3];
         $addressIp = $_SERVER['REMOTE_ADDR'];
+        //pour qu'addressIp reste total lors du traitement
+        $addressIp = str_replace(".", "", $addressIp);
 
         $controlIpReported = $this->Reported->countIpReported($addressIp);
         if($controlIpReported[0] > 3) {
