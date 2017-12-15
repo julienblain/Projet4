@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Table;
+
 use Core\Table\Table;
 
 class CommentsTable extends Table {
@@ -14,9 +14,7 @@ class CommentsTable extends Table {
             ORDER BY idComment
             "
         );
-
     }
-
 
     public function deleteCommentsByIdPost($postId) {
         return $this->delete(
@@ -73,5 +71,4 @@ class CommentsTable extends Table {
             WHERE idComment = '{$commentId}'"
         );
     }
-
 }

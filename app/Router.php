@@ -2,11 +2,11 @@
 namespace App;
 
 class Router {
-    protected $action;
-    protected $controller;
+
     private $_serverSelfAdmin;
     private $_page;
-
+    protected $action;
+    protected $controller;
 
     public function __construct() {
         $this->setServerSelfAdmin();
@@ -15,9 +15,10 @@ class Router {
         $this->setController();
     }
 
+    //lets know if we are on admin page
     public function setServerSelfAdmin() {
-        //permet de recuperer l'url pour voir si on est sur l'espace admin
         $path = $_SERVER['PHP_SELF'];
+
         if (\strstr($path, 'Forteroche')) {
             $this->_serverSelfAdmin = 1;
         } else {
@@ -26,7 +27,7 @@ class Router {
     }
 
     public function setPage() {
-        //si le mec n'est pas authentifié sur admin/index
+        //loggedController control the logged users and return the home view
         if( ($this->_serverSelfAdmin == 1 ) && (!isset($_SESSION['auth'])) ) {
                 $this->_page = 'logged.connection';
         }
@@ -34,11 +35,10 @@ class Router {
                 $this->_page = 'logged.connection';
         }
         elseif (isset($_GET['p'])){
-            //control des parametres
+            //setting control
             $control = $_GET['p'];
             $control = \explode('.', $control);
             if(
-                //verification de l'article et du comment dans le controleur
                 (($control[0] == 'posts') && ($control[1] == 'create') && (isset($_SESSION['auth'])))
                 ||
                 (($control[0] == 'posts') && ($control[1] == 'created') && (isset($_SESSION['auth'])))
@@ -90,24 +90,23 @@ class Router {
     }
 
     public function setAction() {
-        if($this->_serverSelfAdmin === 1) {
+        //count via explode array
+        if($this->_serverSelfAdmin === 1) { // admin page
             if((count($this->_page)) >2) {
                 $this->action = $this->_page[0] . ucfirst($this->_page[2]);
             }
             else {
                 $this->action = $this->_page[0] . $this->_page[1];
             }
-
         }
         else {
-            if((count($this->_page)) > 2 ) {
+            if((count($this->_page)) > 2 ) { // users page
                 $this->action = $this->_page[0] . ucfirst($this->_page[2]);
             }
             else {
                 $this->action = $this->_page[1];
             }
         }
-
     }
 
     public function setController() {
@@ -117,7 +116,6 @@ class Router {
         else {
             $this->controller = '\App\Controller\\' . ucfirst($this->_page[0]) . 'Controller';
         }
-
     }
 
     public function getController() {
@@ -128,5 +126,3 @@ class Router {
         return $this->action;
     }
 }
-
- ?>

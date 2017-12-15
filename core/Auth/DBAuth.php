@@ -1,27 +1,28 @@
 <?php
 
 namespace Core\Auth;
+
 use \Core\Controller\Controller;
 
 class DBAuth {
 
     private $_db;
 
-    // connexion a la base de donnée
+    // bdd connection
     public function __construct($db) {
         $this->_db = $db;
     }
 
-    //verifie dans la session si on a un utilisateur
+    // logged admin verification
     public function logged() {
         return isset($_SESSION['auth']);
     }
 
-    //verification et validation des logins et debut session
+    // verification admin login
     public function login($login, $password, $one) {
         $user = $this->_db->prepare(
             "SELECT * FROM users "
-        , $one);
+            , $one);
 
         if (($user) && ($user->password === sha1($password))) {
             return true;
@@ -30,7 +31,4 @@ class DBAuth {
             return false;
         }
     }
-
-
-
 }

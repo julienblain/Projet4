@@ -1,15 +1,12 @@
 <?php
 namespace Core\Database;
-use Core\Controller\Controller;
 
 class MysqlDatabase {
 
-    //mise en variable des code
     private $_dbName;
     private $_dbUser;
     private $_dbPassword;
     private $_dbHost;
-
     private $_pdo;
 
     public function __construct($dbName, $dbUser, $dbPassword, $dbHost) {
@@ -20,29 +17,29 @@ class MysqlDatabase {
     }
 
     public function getPdo() {
-        //pour eviter de multiple requete pdo
-
         if ($this->_pdo === null) {
-
-
+            try {
                 $pdo = new \PDO('mysql:host=' . $this->_dbHost . ';
                     dbname=' . $this->_dbName . ';
                     charset=utf8',
                     $this->_dbUser,
-                    $this->_dbPassword
+                    $this->_dbPassword,
+                    array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION)
                 );
-                $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-                $this->_pdo = $pdo;
+            }
+            catch (\Exception $e){
+                die('Erreur de connexion à la base de donnée');
+            }
+
+            $this->_pdo = $pdo;
         }
 
         return $this->_pdo;
     }
 
-
-    //recuperation des donnees grace a fecth
     public function query($statement, $one = false) {
         $req = $this->getPdo()->query($statement);
-        $req->setFetchMode(\PDO::FETCH_OBJ); //recuperation des données sous forme d'objet
+        $req->setFetchMode(\PDO::FETCH_OBJ); //return object
 
         if($one) {
             $datas = $req->fetch();
@@ -50,16 +47,16 @@ class MysqlDatabase {
         else {
             $datas = $req->fetchAll();
         }
+
         $req->closeCursor();
         return $datas;
-
     }
 
-//au cas ou on recupere qu'une donnée
+
     public function prepare($statement, $one = false) {
         $req = $this->getPdo()->prepare($statement);
         $req->execute();
-        $req->setFetchMode(\PDO::FETCH_OBJ); //recuperation des données sous forme d'objet
+        $req->setFetchMode(\PDO::FETCH_OBJ); //retrun object
 
         if($one) {
             $datas = $req->fetch();
@@ -67,8 +64,8 @@ class MysqlDatabase {
         else {
             $datas = $req->fetchAll();
         }
-        $req->closeCursor();
 
+        $req->closeCursor();
         return $datas;
     }
 
@@ -91,19 +88,7 @@ class MysqlDatabase {
         $req->closeCursor();
     }
 
-    public function countPrepare($statement) {
-        $req = $this->getPdo()->prepare($statement);
-        $req->execute();
-        $data = $req->fetch();
-        $req->closeCursor();
-        return $data;
-    }
-
     public function updateOne($statement) {
         $req = $this->getPdo()->exec($statement);
     }
-
-
-
-
 }

@@ -1,14 +1,17 @@
 <?php
 namespace App\Admin;
+
 use \App;
 use App\Controller\AppController;
 
 class PostsController extends AppController {
-    public $postId;
+    
+    protected $postId;
 
     public function __construct() {
         //viewPath is in parent class
         parent::__construct();
+
         //call the function loadModel of parent
         $this->loadModel('Posts');
         $this->loadModel('Comments');
@@ -24,9 +27,12 @@ class PostsController extends AppController {
         $this->setPost();
         $postsTitle = $this->Posts->queryTitles();
         $post = $this->Posts->queryPostSelected($this->postId);
+
+        //if the selected post don't exist
         if(empty($post)) {
              return $this->error();
         }
+
         $comments = $this->Comments->queryCommentsById($this->postId);
         return $this->render('admin.read', compact('postsTitle', 'post', 'comments'));
     }
@@ -36,6 +42,7 @@ class PostsController extends AppController {
         $this->Posts->deletePostById($this->postId);
         $this->Comments->deleteCommentsByIdPost($this->postId);
         include_once($this->viewPath.'/admin/delete.php');
+
         // home view
         $index = new LoggedController;
         return $index->adminIndex();
@@ -50,6 +57,8 @@ class PostsController extends AppController {
 
     public function postsUpdated() {
         $this->setPost();
+
+        //validity control by tinyMCE
         $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
         $post = $this->Posts->updatedPost($this->postId, $postTitle, $postContent);
@@ -57,16 +66,17 @@ class PostsController extends AppController {
         include_once($this->viewPath.'/admin/updated.php');
         $index = new LoggedController;
         return $index->adminIndex();
-
     }
 
     public function postsCreate() {
          $postsTitle = $this->Posts->queryTitles();
-        return $this->render('admin.create', compact('postsTitle'));
+         return $this->render('admin.create', compact('postsTitle'));
     }
 
     public function postsCreated() {
         $app = App::getInstance();
+
+        //validity control by tinyMCE
         $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
         $this->Posts->insert($postTitle, $postContent);
@@ -75,8 +85,4 @@ class PostsController extends AppController {
         $index = new LoggedController;
         return $index->adminIndex();
     }
-
-
-
-
 }

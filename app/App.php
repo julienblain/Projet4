@@ -1,14 +1,10 @@
 <?php
-//permet de ne plus trinballer $datas de page en page, et permet de garder la connexion
-//donc methode static
-//pas de namespace pour que ca soit plus simple a appelé par la suite
-//carrefour pour l'appli
-
 use Core\Config;
 use Core\Database\MysqlDatabase;
 use App\Router;
 
 class App {
+
     public $titlePage = "Billet simple pour l'Alaska";
     private $_dbInstance;
     private static $_instance;
@@ -21,7 +17,7 @@ class App {
             return $controller->$action();
     }
 
-    //chargement des autoloader et session start
+    //load autoloader and session start
     public function load () {
         require ROOT . '/app/Autoloader.php';
         App\Autoloader::register();
@@ -37,7 +33,7 @@ class App {
         return self::$_instance;
     }
 
-    //Design Pattern Factory (namespace)
+    //Design Pattern Factory
     public function getTable($modelName) {
         $className = '\\App\\Table\\' . ucfirst($modelName) . 'Table';
         return new $className($this->getDb());
@@ -45,6 +41,7 @@ class App {
 
     public function getDb() {
         $config = Config::getInstance(ROOT . '/config/config.php');
+
         if($this->_dbInstance === null) {
             $this->_dbInstance = new MysqlDatabase(
                 $config->getSettings('db_name'),
@@ -52,12 +49,8 @@ class App {
                 $config->getSettings('db_pass'),
                 $config->getSettings('db_host')
             );
-
         }
 
          return $this->_dbInstance;
     }
-
-
-
 }

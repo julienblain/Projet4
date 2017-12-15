@@ -1,10 +1,10 @@
 <div id="connection-flex">
-    <p id="hello-connection">Bonjour, veuillez vous identifiez. </p>
+    <p id="hello-connection">Bonjour, veuillez vous identifiez.</p>
 
     <form id='form-connection' action="?p=logged.connection" method="post">
         <label for="connection-login">
             Login :
-             <input id="connection-login" type="text" name="login" required>
+            <input id="connection-login" type="text" name="login" required>
         </label>
 
         <label for="connection-password">

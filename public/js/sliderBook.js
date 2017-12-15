@@ -1,12 +1,15 @@
 var sliderBook = {
+
     bookWidth : 0,
 
+    // retrieval of the left coordinates
     lastChildLeft : function () {
         this.bookWidth = document.getElementById('post-index-container').offsetWidth;
         var lastChildOffset = document.getElementById('endChap').offsetLeft;
 
+        // if the left coordinate is not inside book, we shift
         if(lastChildOffset >= this.bookWidth) {
-           var firstChildOffset = document.getElementById('firstChild-bug-js').offsetLeft;
+            var firstChildOffset = document.getElementById('firstChild-bug-js').offsetLeft;
             var offsetWidth = -(this.bookWidth) + firstChildOffset ;
 
             $('#postContent').children('p').fadeOut(500)
@@ -41,7 +44,7 @@ var sliderBook = {
     }
 }
 
-/*evenement*/
+/*events btn book*/
 $("#book-after").click(function() {
    sliderBook.lastChildLeft();
 });

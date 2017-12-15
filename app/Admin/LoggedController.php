@@ -1,19 +1,21 @@
 <?php
 namespace App\Admin;
 
-use App\Controller\AppController;
 use \App;
+use App\Controller\AppController;
 use Core\Auth\DBAuth;
 
- class LoggedController  extends AppController {
+class LoggedController extends AppController {
 
      public function loggedConnection() {
          $app = App::getInstance();
          $auth = new DBAuth($app->getDb());
 
+         //user already logged
          if(isset($_SESSION['auth'])) {
               return $this->adminIndex();
          }
+         // user tries
          elseif (isset($_POST['login']) && isset($_POST['password'])) {
              $login = htmlspecialchars($_POST['login']);
              $password = htmlspecialchars($_POST['password']);
@@ -25,9 +27,10 @@ use Core\Auth\DBAuth;
               else {
                  // if login or password error
                  include_once($this->viewPath."admin/error.php");
-             return $this->connectionPage();
+                 return $this->connectionPage();
              }
          }
+         // user not logged
          else {
              $this->connectionPage();
          }
@@ -42,8 +45,7 @@ use Core\Auth\DBAuth;
          $this->loadModel('Comments');
          $postsTitle = $this->Posts->queryTitles();
          $commentsReported = $this->Comments->queryAllReported();
-        $variables = compact('postsTitle', 'commentsReported');
-        $this->render('admin.posts', $variables);
+         $variables = compact('postsTitle', 'commentsReported');
+         $this->render('admin.posts', $variables);
      }
-
- }
+}
