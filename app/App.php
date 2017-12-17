@@ -17,7 +17,7 @@ class App {
             return $controller->$action();
     }
 
-    //load autoloader and session start
+    //load autoloader
     public function load () {
         require ROOT . '/app/Autoloader.php';
         App\Autoloader::register();
